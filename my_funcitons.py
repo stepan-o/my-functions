@@ -571,6 +571,72 @@ def limit_accuracy_checker(classifier, limits,
     return result
 
 
+def plot_model_results(plot_df,
+                       x, y, hue=None,
+                       xlabel="", ylabel="",
+                       title="",
+                       null_accuracy=None,
+                       plot_max=True,
+                       text_lift=1.03):
+    """
+    a function to plot results of model performance.
+    takes in a melted DataFrame with model results
+    plots bar charts grouped by 'x' colored by 'hue'
+
+    for the plotting function to work, each row
+    in the DataFrame must correspond to 1 bar only
+    (DataFrame must be melted)
+    """
+    # font to be used in axes labels
+    font = {'family': 'serif',
+            'color':  'darkred',
+            'weight': 'normal',
+            'size': 16}
+    # font to be used for null accuracy
+    font_null_acc = {'family': 'serif',
+                     'color':  'black',
+                     'weight': 'normal',
+                     'size': 16}
+    # font to be used for model accuracy
+    font_acc = {'family': 'serif',
+                'color':  'darkgreen',
+                'weight': 'normal',
+                'size': 16}
+
+    # plot grouped bar chart
+    sns.catplot(x=x, y=y, hue=hue, data=plot_df, kind='bar')
+    # get axis created by seaborn
+    ax = plt.gca()
+
+    if plot_max:
+        # plot max value from model performance
+        ax.axhline(plot_df[y].max(),
+                   color='darkgreen',
+                   linestyle='--',
+                   linewidth=2)
+        ax.text(0, plot_df[y].max() * text_lift,
+                "Best accuracy: {0:.2f}"
+                .format(plot_df[y].max()),
+                fontdict=font_acc)
+
+    if null_accuracy:
+        # plot null accuracy
+        ax.axhline(null_accuracy,
+                   linestyle='--',
+                   color='black',
+                   linewidth=2)
+        ax.text(0, null_accuracy * text_lift,
+                "Null accuracy: {0:.2f}"
+                .format(null_accuracy),
+                fontdict=font_null_acc)
+
+    # set axis parameters
+    ax.set_ylabel(ylabel, fontdict=font)
+    ax.set_xlabel(xlabel, fontdict=font)
+    ax.set_title(title)
+    plt.show()
+
+
 def plot_time_series(series_to_plot, summary_stats=False,
                      create_plot=True, show_plot=True, ax=None,
                      color='blue', linestyle='-', linewidth=1, alpha=1.,

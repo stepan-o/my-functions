@@ -3,6 +3,7 @@
     <words>
       <w>barh</w>
       <w>bigram</w>
+      <w>darkgreen</w>
       <w>darkred</w>
       <w>deeppink</w>
       <w>labelize</w>
@@ -13,6 +14,7 @@
       <w>onehot</w>
       <w>pred</w>
       <w>scikit</w>
+      <w>seaborn</w>
       <w>stemmer</w>
       <w>tfidf</w>
       <w>tokenized</w>
