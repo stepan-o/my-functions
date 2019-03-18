@@ -419,6 +419,63 @@ def solve(func, value, x=0.5, delta=0.00001,
     return
 
 
+def taylor_approx_sin_x(x, terms):
+    """
+    function that uses Taylor Series expansion of sin(x)
+    to find approximate values for supplied range of x
+
+    -----------------------------------------------------
+    Input arguments: x         -- np.array -- array with x values
+                     n         -- integer  -- number of terms in the Taylor Series expansion
+                                              (x - x^3/3! + x^5/5! + ...)
+
+    Returns: approximation     -- float    -- approximated values of the function sin(x)
+    """
+    # create an numpy array to store results
+    approximation = np.array(0)
+
+    # perform Taylor Series expansion: e^x = 1 + x+ x^2 / 2! + x^3 / 3! + ...
+    # loop over all terms (subtract 1 for the first term)
+    for n in np.arange(terms):
+        # add subsequent terms (+1 to start from 1, not 0)
+        approximation += (-1) ** n / np.math.factorial(2 * n + 1) * x ** (2 * n + 1)
+    # return an array with approximated values
+    return approximation
+
+
+def taylor_sin_x_loop(min_x, max_x, min_terms, max_terms):
+    """
+    function that loops the Taylor Series approximation
+    increasing number of terms used in approximation
+
+    calls another function 'taylor_ser_approx_sin_x'
+    and returns a DataFrame with results
+
+    Input arguments: min_x            -- float            -- minimum value of x to be used for approximation
+                     max_x            -- float            -- maximum value of x to be used for approximation
+                     min_terms        -- integer          -- minimum number of terms to be used in the
+                                                             approximation using Taylor Series expansion
+                     max_terms        -- integer          -- maximum number of terms to be used in the
+                                                             approximation using Taylor Series expansion
+
+    Returns:         ts_df            -- pandas DataFrame -- DataFrame with results of approximation
+    """
+    # create an empty DataFrame to store results
+    ts_df = pd.DataFrame()
+    # create x-axis values
+    ts_df['x'] = np.linspace(min_x, max_x, 1000)
+    # calculate values of the actual function
+    ts_df['f(x)'] = np.sin(ts_df['x'])
+
+    # loop over the range of terms for Taylor Series expansion
+    for terms in np.arange(min_terms, max_terms + 1):
+        # call function that performs Taylor Series expansion, supplying x argument and the number of terms
+        ts_df['ts_approx_' + str(terms)] = taylor_approx_sin_x(ts_df['x'], terms)
+
+    # return DataFrame with results of Taylor Series expansion
+    return ts_df
+
+
 # ---------------------- Data Cleaning ----------------------------------
 
 
