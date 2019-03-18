@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -6,6 +7,7 @@ from gensim.models.doc2vec import LabeledSentence
 from gensim.models.phrases import Phrases
 from gensim.models.phrases import Phraser
 from wordcloud import WordCloud
+from sklearn.feature_extraction.text import CountVectorizer
 
 
 def unique_values(df_column: pd.Series, value_counts=True):
@@ -241,6 +243,102 @@ def plot_wordcloud(string, colormap='viridis'):
     ax.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
     plt.show()
+
+
+def tfm_2class(df, label_col, label_vals, text_col,
+               class_names=('neg_tf', 'pos_tf'),
+               sw='english',
+               min_df=0.01, max_df=0.9,
+               return_type='tfm'):
+    """
+    a function to create a Term Frequency Matrix
+    from the corpus of documents found in
+    column 'text_col' of DataFrame 'df'
+
+    this function is designed to work with 2 classes
+    of target variable found in column 'label_col' of 'df',
+    values of classes (e.g., -1, 1)
+    need to be supplied as a list in parameter 'label_vals'
+
+    class names for the return DataFrame
+    can be specified via parameters
+    'class1_name' and 'class2_name'
+
+    'text_col' is the name of column in 'df'
+    containing documents to be summarized
+
+    param: df -- pd.DataFrame  -- DataFrame that contains
+                                the corpus to be summarized
+           label_col -- string -- name of the column
+                                in 'df' containing label
+                                (target) information
+           label_vals -- list  -- list of values that
+                                 'label_col' can take
+                                 (e.g., [1, -1])
+                                 only 2 values supported
+
+    returns: tfm_df -- pd.DataFrame -- term frequency
+                                       matrix of the corpus
+    """
+    # initialize CountVectorizer from Scikit-learn
+    vectorizer = CountVectorizer(strip_accents='unicode',
+                                 stop_words=sw,
+                                 max_df=max_df,
+                                 min_df=min_df)
+
+    # fit vectorizer to corpus in 'text_col' of 'df'
+    vectors_f = vectorizer.fit(df[text_col])
+
+    # create a subset of 'df' with all records of class 1
+    class1_subset = df \
+        .loc[df[label_col] == label_vals[0], text_col]
+    # vectorize subset into a sparse matrix
+    class1_doc_matrix = vectors_f \
+        .transform(class1_subset)
+
+    # create a subset of 'df' with all records of class 2
+    class2_subset = df \
+        .loc[df[label_col] == label_vals[1], text_col]
+    # vectorize subset into a sparse matrix
+    class2_doc_matrix = vectors_f \
+        .transform(class2_subset)
+
+    # sum occurrence of each token
+    class1_tf = np.sum(class1_doc_matrix, axis=0)
+    class2_tf = np.sum(class2_doc_matrix, axis=0)
+
+    # remove single-dimensional entries from the shape of the arrays
+    class1 = np.squeeze(np.asarray(class1_tf))
+    class2 = np.squeeze(np.asarray(class2_tf))
+
+    # create a DataFrame with token frequencies by class
+    tfm_df = pd.DataFrame([class1, class2],
+                          columns=vectors_f.get_feature_names()) \
+        .transpose()
+
+    # change column names
+    tfm_df.columns = class_names
+
+    # create a new column with total token frequency
+    tfm_df['total'] = tfm_df[class_names[0]] \
+                      + tfm_df[class_names[1]]
+
+    # create a new column with difference between classes
+    tfm_df['abs_diff'] = \
+        abs(tfm_df[class_names[0]]
+            - tfm_df[class_names[1]])
+
+    if return_type == 'tfm':
+        # return Term Frequency Matrix for the corpus
+        return tfm_df
+
+    elif return_type == 'dtr':
+        # return sum of abs of all diff by total sum
+        return tfm_df['abs_diff'].sum() / tfm_df['total'].sum()
+    else:
+        print("'return_type' must be either 'tfm' " +
+              "for Term Frequency Matrix")
+        print("or 'dtr' for AbsDiff / Total ratio.")
 
 
 def plot_time_series(series_to_plot, summary_stats=False,

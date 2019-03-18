@@ -10,9 +10,13 @@
       <w>linewidth</w>
       <w>minmax</w>
       <w>nltk</w>
+      <w>scikit</w>
       <w>stemmer</w>
       <w>tokenized</w>
       <w>tokenizes</w>
+      <w>vals</w>
+      <w>vectorize</w>
+      <w>vectorizer</w>
       <w>viridis</w>
       <w>wordcloud</w>
       <w>xlabel</w>
