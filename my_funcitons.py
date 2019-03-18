@@ -374,6 +374,41 @@ def plot_xy(x=None, y=None, line_color='blue',
         plt.show()
 
 
+def plot_df(df_to_plot, x_key, title, x_lim=None, y_lim=None):
+    """
+    function to plot a DataFrame, uses 'x_key' for x-axis
+
+    -----------------------------------------------------
+    Input arguments: df_to_plot    -- pandas DataFrame -- DataFrame with results to be plotted
+                     x_key -- string           -- index of the column to be used for x axis
+                     x_lim -- list of 2 floats -- list of 2 limits to be used on the x axis of the plot (default=None)
+                     y_lim -- list of 2 floats -- list of 2 limits to be used on the y axis of the plot (default=None)
+
+    Returns:         None, plots a graph of a function
+    """
+    # create figure and axis
+    f, ax = plt.subplots(1, figsize=(8, 8))
+
+    # plot results
+    df_to_plot.plot(x=x_key, ax=ax)
+
+    # set axis parameters
+    ax.set_title(title)
+    ax.axhline(0, linestyle='--', linewidth=1, color='black')
+    ax.axvline(0, linestyle='--', linewidth=1, color='black')
+    ax.set_xticks(np.arange(df_to_plot[x_key].min(), df_to_plot[x_key].max() + 1))
+    ax.grid(False)
+
+    # set axis limits (if supplied)
+    if x_lim is not None:
+        ax.set_xlim(x_lim)
+
+    if y_lim is not None:
+        ax.set_ylim(y_lim)
+
+    plt.show()
+
+
 # -------------------------- Math ---------------------------------------
 
 
