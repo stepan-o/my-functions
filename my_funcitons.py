@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import statistics as stats
 from collections.abc import Iterable
 from gensim.models.doc2vec import LabeledSentence
 from gensim.models.phrases import Phrases
@@ -182,6 +183,47 @@ def plot_scatter(ser1=None, ser2=None,
     plt.xlabel(ser1_name, fontdict=font)
     plt.title(plot_title, fontdict=font)
     plt.tick_params(labelsize=tick_label_size)
+
+    plt.show()
+    return
+
+
+def plot_set_mean_median(set_to_plot, title,
+                         mean_lift=1.1, median_lift=1.1,
+                         legend_loc='best'):
+    """
+    function to plot a set, its mean, and median
+
+    Input arguments: set_to_plot -- list   -- set of numbers to plot
+                     title       -- string -- title of the plot
+                     mean_lift   -- float  -- lift of text above mean line on the plot (default=1.1)
+                     median_lift -- float  -- lift of text above median line on the plot (default=1.1)
+                     legend_loc  -- string -- location of the legend for ax.legend (default='best')
+
+    Output:          None, plots set, its mean, and median
+    """
+    # calculate mean and median of the input set
+    set_mean = stats.mean(set_to_plot)
+    set_median = stats.median(set_to_plot)
+
+    # create a new axis
+    ax = plt.axes(facecolor='whitesmoke')
+
+    # plot the set
+    ax.plot(set_to_plot, linestyle=':', linewidth=0.5, color='blueviolet', marker='o', label='Set numbers')
+
+    # plot mean and median
+    ax.axhline(set_mean, linestyle='--', linewidth=1.2, color='deeppink', label='Mean')
+    ax.text(0, set_mean * mean_lift, "Mean of the set: {0:.2f}".format(set_mean))
+    ax.axhline(set_median, linestyle=':', color='coral', label='Median')
+    ax.text(0, set_median * median_lift, "Median of the set: {0:.2f}".format(set_median))
+
+    # set axis parameters
+    ax.set_title(title)
+    ax.legend(loc=legend_loc, fancybox=True)
+    plt.ylabel('Value')
+    plt.xlabel('Element of the set')
+    ax.grid(False)
 
     plt.show()
     return

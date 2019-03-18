@@ -3,6 +3,7 @@
     <words>
       <w>barh</w>
       <w>bigram</w>
+      <w>blueviolet</w>
       <w>darkgreen</w>
       <w>darkred</w>
       <w>deeppink</w>
@@ -24,6 +25,7 @@
       <w>vectorize</w>
       <w>vectorizer</w>
       <w>viridis</w>
+      <w>whitesmoke</w>
       <w>wordcloud</w>
       <w>xlabel</w>
       <w>ylabel</w>
