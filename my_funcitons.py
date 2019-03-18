@@ -11,6 +11,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import train_test_split
 
 
 def unique_values(df_column: pd.Series, value_counts=True):
@@ -372,6 +373,65 @@ def model_performance_report(labels,
     return
 
 
+def train_dev_test_split(x, y, label_values,
+                         test_size=.02,
+                         random_state=2000):
+    """
+    a function to split data (x and y)
+    into three chunks: train, development, test.
+
+    The data is split using the `train_test_split`
+    function from `scikit-learn` two times:
+
+    first, split train and dev+test;
+
+    then, split dev and test from dev+test.
+    """
+    # split data into train and dev+test subsets
+    x_train, x_validation_and_test, \
+        y_train, y_validation_and_test = \
+        train_test_split(x, y,
+                         test_size=test_size,
+                         random_state=random_state)
+
+    # split dev+test subset into dev and test subsets
+    x_validation, x_test, y_validation, y_test = \
+        train_test_split(x_validation_and_test,
+                         y_validation_and_test,
+                         test_size=.5,
+                         random_state=random_state)
+
+    print("Train set has total {0} entries"
+          .format(len(x_train)))
+    print("with {0:.2f}% negative, {1:.2f}% positive.\n"
+          .format((len(x_train[y_train == label_values[0]])
+                   / (len(x_train) * 1.)) * 100,
+                  (len(x_train[y_train == label_values[1]])
+                   / (len(x_train) * 1.)) * 100))
+
+    print("Validation set has total {0} entries"
+          .format(len(x_validation)))
+    print("with {0:.2f}% negative, {1:.2f}% positive.\n"
+          .format(
+                  (len(x_validation[y_validation == label_values[0]])
+                      / (len(x_validation)*1.))*100,
+                  (len(x_validation[y_validation == label_values[1]])
+                      / (len(x_validation)*1.))*100))
+
+    print("Test set has total {0} entries"
+          .format(len(x_test)))
+    print("with {0:.2f}% negative, {1:.2f}% positive."
+          .format(
+                 (len(x_test[y_test == label_values[0]])
+                     / (len(x_test)*1.))*100,
+                (len(x_test[y_test == label_values[1]])
+                     / (len(x_test)*1.))*100))
+
+    # return 6 subsets -- train, dev, and test x and y
+    return x_train, x_validation, x_test, \
+        y_train, y_validation, y_test
+
+
 def plot_time_series(series_to_plot, summary_stats=False,
                      create_plot=True, show_plot=True, ax=None,
                      color='blue', linestyle='-', linewidth=1, alpha=1.,
@@ -539,9 +599,9 @@ def plot_scatter(ser1=None, ser2=None,
     return
 
 
-def train_test_split(input_data, train_subset_ratio):
+def train_test_split_temp(input_data, train_subset_ratio):
     """
-
+    a function to perform a temporal train test split
     :param input_data:  -- data to be split
     :param train_subset_ratio:  -- ratio to used to generate training subset
     :return: train -- training subset
