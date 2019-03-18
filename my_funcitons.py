@@ -187,6 +187,69 @@ def plot_scatter(ser1=None, ser2=None,
     return
 
 
+def plot_bars_with_minmax(series_to_plot, title,
+                          with_minmax=True,
+                          min_border=0.95, max_border=0.99, minmax_width=0.5):
+    """
+    function to plot a gray bar chart from a pandas Series,
+    plots mean
+    highlights bars with minimum values
+
+    Input arguments: series_to_plot -- pandas Series -- Series to plot as a bar chart
+                     title          -- string        -- string containing title of the chart
+                     with_minmax    -- boolean       -- option to highlight extreme values
+                                                        from the Series (default=True)
+                     min_border     -- float         -- height limit for black min bar on the plot
+                                                        (default=0.95)
+                     max_border     -- float         -- height limit for lightgray max bar on the plot
+                                                        (default=0.99)
+                     minmax_width   -- float         -- width for min and max bars on the plot
+                                                        (default=0.5)
+
+
+    Output:          None, plots and shows bar chart with mean and extremes (optional) highlighted
+    """
+
+    # create figure and axis
+    f, ax = plt.subplots(1)
+
+    # plot a gray bar chart from input Series
+    plt.bar(x=series_to_plot.index,
+            height=series_to_plot,
+            color='gray')
+
+    # plot mean of the series
+    ax.axhline(series_to_plot.mean(), color='black', linestyle='--', linewidth=1)
+    ax.text(0,
+            series_to_plot.mean() * 1.01,
+            "Mean of counts: {0:.2f}".format(series_to_plot.mean()))
+
+    # optional: highlight the bars with minimum values (if input parameter 'with_min' is True)
+    if with_minmax:
+        min_se = series_to_plot[series_to_plot == series_to_plot.min()]
+        plt.bar(x=min_se.index,
+                height=min_se * min_border,
+                color='black',
+                width=minmax_width)
+
+        max_se = series_to_plot[series_to_plot == series_to_plot.max()]
+        plt.bar(x=max_se.index,
+                height=max_se * max_border,
+                color='lightgray',
+                width=minmax_width)
+
+    # set axis parameters
+    ax.set_title(title)
+    ax.set_xlabel("Number")
+    ax.set_xticks(series_to_plot.index)
+    ax.set_ylabel("Frequency of occurrences")
+    ax.tick_params('x', labelrotation=1, labelsize=20)
+    ax.grid(False)
+
+    plt.show()
+    return
+
+
 # ---------------------- Data Cleaning ----------------------------------
 
 
