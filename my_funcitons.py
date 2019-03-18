@@ -1177,7 +1177,7 @@ than null accuracy".format((null_accuracy-accuracy)*100))
     return accuracy, train_test_time
 
 
-def plot_model_results(plot_df,
+def plot_model_results(model_results_df,
                        x, y, hue=None,
                        xlabel="", ylabel="",
                        title="",
@@ -1210,19 +1210,19 @@ def plot_model_results(plot_df,
                 'size': 16}
 
     # plot grouped bar chart
-    sns.catplot(x=x, y=y, hue=hue, data=plot_df, kind='bar')
+    sns.catplot(x=x, y=y, hue=hue, data=model_results_df, kind='bar')
     # get axis created by seaborn
     ax = plt.gca()
 
     if plot_max:
         # plot max value from model performance
-        ax.axhline(plot_df[y].max(),
+        ax.axhline(model_results_df[y].max(),
                    color='darkgreen',
                    linestyle='--',
                    linewidth=2)
-        ax.text(0, plot_df[y].max() * text_lift,
+        ax.text(0, model_results_df[y].max() * text_lift,
                 "Best accuracy: {0:.2f}"
-                .format(plot_df[y].max()),
+                .format(model_results_df[y].max()),
                 fontdict=font_acc)
 
     if null_accuracy:
