@@ -28,7 +28,9 @@
       <w>whitesmoke</w>
       <w>wordcloud</w>
       <w>xlabel</w>
+      <w>xlift</w>
       <w>ylabel</w>
+      <w>ylift</w>
     </words>
   </dictionary>
 </component>

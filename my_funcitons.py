@@ -292,6 +292,133 @@ def plot_bars_with_minmax(series_to_plot, title,
     return
 
 
+def plot_xy(x=None, y=None, line_color='blue',
+            line_label="", line_label_size=16,
+            line_label_xlift=1, line_label_ylift=1.05,
+            points_x=None, points_y=None,
+            points_color='red', points_size=3,
+            plot_title="",
+            v_line=None, h_line=None,
+            sup_line_style='--', sup_line_width=0.5, sup_line_color='gray',
+            x_lim=None, y_lim=None,
+            create_plot=True, show_plot=True, ax=None):
+    """
+    plot funcs
+    """
+
+    def plot_lines(line_type, sup_line):
+        """
+        plots and annotates horizontal and vertical lines
+        """
+        if line_type == 'h':
+            ax.axhline(sup_line, color=sup_line_color,
+                       linestyle=sup_line_style, linewidth=sup_line_width)
+            ax.text(0, sup_line, sup_line)
+        elif line_type == 'v':
+            ax.axvline(sup_line, color=sup_line_color,
+                       linestyle=sup_line_style, linewidth=sup_line_width)
+            ax.text(sup_line, 0, sup_line)
+        else:
+            print("func 'plot_lines': Input parameter 'line_type' must be either 'h' or 'v'.")
+
+    line_text_style = dict(horizontalalignment='right',
+                           verticalalignment='center',
+                           fontsize=line_label_size,
+                           fontdict={'family': 'monospace'})
+
+    if create_plot:
+        f, ax = plt.subplots(1, figsize=(6, 6))
+        f.suptitle(plot_title)
+        # plot axes
+        ax.axvline(0, color='black', linestyle='-', linewidth=2)
+        ax.set_ylabel('y', rotation=0)
+        ax.axhline(0, color='black', linestyle='-', linewidth=2)
+        ax.set_xlabel('x')
+        ax.grid(False)
+
+    # plot the function (if supplied in arguments)
+    if x is not None and y is not None:
+        ax.plot(x, y, color=line_color)
+
+        ax.text(x[int(len(x) / 2)] * line_label_xlift,
+                y[int(len(y) / 2)] * line_label_ylift,
+                line_label, color=line_color, **line_text_style)
+
+    # plot the points (if supplied in arguments)
+    if points_x is not None and points_y is not None:
+        ax.scatter(points_x, points_y, s=points_size, color=points_color)
+
+    # plot vertical lines (if supplied)
+    if isinstance(v_line, Iterable):
+        for line in v_line:
+            plot_lines('v', line)
+    elif type(v_line) is float or type(v_line) is int \
+            or type(h_line) is np.float64:
+        plot_lines('v', v_line)
+
+    # plot horizontal lines
+    if isinstance(h_line, Iterable):
+        for line in h_line:
+            plot_lines('h', line)
+    elif type(h_line) is float or type(h_line) is int \
+            or type(h_line) is np.float64:
+        plot_lines('h', h_line)
+
+    # zoom axes
+    if x_lim:
+        ax.set_xlim(x_lim[0], x_lim[1])
+    if y_lim:
+        ax.set_ylim(y_lim[0], y_lim[1])
+
+    if show_plot:
+        plt.show()
+
+
+# -------------------------- Math ---------------------------------------
+
+
+def f(x):
+    """ placeholder for a function f(x) """
+    return x
+
+
+def df(x, delta=0.00001):
+    """ derivative of a function """
+    return (f(x + delta) - f(x)) / delta
+
+
+def ddf(x, delta=0.00001):
+    """ second derivative of a function """
+    return (df(x + delta) - df(x)) / delta
+
+
+def solve(func, value, x=0.5, delta=0.00001,
+          max_tries=1000, max_err=0.1,
+          print_all=False, x_round=5):
+    """
+    equation solver
+    find 'x' that maps through 'func' to 'value'
+
+    moves 'x' by 'err' divided by 'slope'
+    in the direction opposite to 'slope'
+    until 'func(x)' - 'value' < 'max_err'
+
+    """
+    for tries in range(max_tries):
+        err = func(x) - value
+        if abs(err) < max_err:
+            print("Solved in {0:,} steps!".format(tries))
+            return x
+        slope = (func(x + delta) - func(x)) / delta
+        x = x - err / slope
+        if print_all:
+            print(x)
+    print("After {0:,} iterations, no solutions found within:\nerr = {1}"
+          .format(max_tries, max_err))
+    print("Last value of x = {0:.{1}f}".format(x, x_round))
+    return
+
+
 # ---------------------- Data Cleaning ----------------------------------
 
 
