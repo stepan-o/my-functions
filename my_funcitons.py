@@ -119,6 +119,67 @@ def duplicate_check(df, subsets_to_check: dict = None, cols_to_drop=None):
     return dup_results_df
 
 
+def tokenize_text(text):
+    """
+    tokenizes and filters provided text into words
+
+    since this function is used inside of a pandas.apply
+    method, it can only accept one parameter 'text' as
+    input, and therefore relies on the rest of variables
+    to be declared outside of the function and accessed
+    through the global scope
+
+    these variables include: NLTK tokenizer as 'tokenizer',
+    NLTK stemmer as 'stemmer', list of stop words as 'stop_words',
+    and min length used to filter tokens as 'min_length'
+
+    first, tokens are created from input text
+    using the global tokenizer 'tokenizer',
+
+    then, words are converted to lower case,
+    punctuation and stop words are removed,
+
+    after that, words are stemmed using the
+    global stemmer 'stemmer'
+
+    finally, all words with length < 3 are filtered out
+
+    param: text       -- string -- text to be tokenized
+
+    global variable: tokenizer  -- NLTK tokenizer
+                                   tokenizer used to generate tokens
+                                   (needs to be initialized as 'tokenizer'
+                                   before this function can be called)
+    global variable: stemmer    -- NLTK stemmer
+                                   stemmer used to stem tokens
+                                   (needs to be initialized as 'stemmer'
+                                   before this function can be called)
+    global variable: stop_words -- list
+                                   list of stop words to use for filtering
+                                   out all tokens that are in this list
+    global variable: min_length -- int
+                                   min length used to filter out all
+                                   tokens shorter than 'min_length'
+
+    returns: filtered_tokens -- list of tokens produced from text
+    """
+    # tokenizer and stemmer used by the function, need to be initialized prior to call
+    global tokenizer, stemmer, stop_words, min_length
+    # creating a map object with 'text' tokenized into lower-cased 'words'
+    words = map(lambda word: word.lower(), tokenizer.tokenize(text))
+
+    # remove stop words -- common words, such as 'the', 'a', 'in', etc. using the provided list
+    words = [word for word in words if word not in stop_words]
+
+    # stem the words
+    tokens = (list(map(lambda token: stemmer.stem(token), words)))
+
+    # remove all the words with length less than 3
+    filtered_tokens = list(filter(lambda token: len(token) >= min_length, tokens))
+
+    return filtered_tokens
+
+
 def plot_time_series(series_to_plot, summary_stats=False,
                      create_plot=True, show_plot=True, ax=None,
                      color='blue', linestyle='-', linewidth=1, alpha=1.,

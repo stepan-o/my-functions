@@ -6,6 +6,10 @@
       <w>linestyle</w>
       <w>linewidth</w>
       <w>minmax</w>
+      <w>nltk</w>
+      <w>stemmer</w>
+      <w>tokenized</w>
+      <w>tokenizes</w>
       <w>xlabel</w>
       <w>ylabel</w>
     </words>
