@@ -12,6 +12,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
+from time import time
 
 
 def unique_values(df_column: pd.Series, value_counts=True):
@@ -430,6 +431,60 @@ def train_dev_test_split(x, y, label_values,
     # return 6 subsets -- train, dev, and test x and y
     return x_train, x_validation, x_test, \
         y_train, y_validation, y_test
+
+
+def accuracy_summary(pipeline,
+                     x_train, y_train,
+                     x_test, y_test,
+                     label_values=(0, 1)):
+
+    # null accuracy using the Zero Rule
+    if len(x_test[y_test == label_values[0]]) \
+            / (len(x_test)*1.) > 0.5:
+        # predicting majority class
+        null_accuracy = \
+            len(x_test[y_test == label_values[0]]) \
+            / (len(x_test)*1.)
+    else:
+        null_accuracy = \
+            1. - (len(x_test[y_test == label_values[0]])
+                  / (len(x_test)*1.))
+
+    # set starting time
+    t0 = time()
+
+    # fit the model
+    sentiment_fit = pipeline.fit(x_train, y_train)
+
+    # test the model
+    y_pred = sentiment_fit.predict(x_test)
+
+    # record train-test time
+    train_test_time = time() - t0
+
+    # compute accuracy score
+    accuracy = accuracy_score(y_test, y_pred)
+
+    # print model performance results
+    print("null accuracy: {0:.2f}%"
+          .format(null_accuracy*100))
+    print("accuracy score: {0:.2f}%"
+          .format(accuracy*100))
+
+    # compare model performance to null accuracy
+    if accuracy > null_accuracy:
+        print("model is {0:.2f}% more accurate \
+than null accuracy".format((accuracy-null_accuracy)*100))
+    elif accuracy == null_accuracy:
+        print("model has the same accuracy with \
+the null accuracy")
+    else:
+        print("model is {0:.2f}% less accurate \
+than null accuracy".format((null_accuracy-accuracy)*100))
+    print("train and test time: {0:.2f}s"
+          .format(train_test_time))
+    print("-"*80)
+    return accuracy, train_test_time
 
 
 def plot_time_series(series_to_plot, summary_stats=False,
