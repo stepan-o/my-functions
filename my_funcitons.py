@@ -776,7 +776,7 @@ def string_concat(ser, string_name="", display_sym=500,
     return con_string
 
 
-def tfm_2class(df, label_col, label_vals, text_col,
+def tfm_2class(corpus_df, label_col, label_vals, text_col,
                class_names=('neg_tf', 'pos_tf'),
                sw='english',
                min_df=0.01, max_df=0.9,
@@ -784,10 +784,10 @@ def tfm_2class(df, label_col, label_vals, text_col,
     """
     a function to create a Term Frequency Matrix
     from the corpus of documents found in
-    column 'text_col' of DataFrame 'df'
+    column 'text_col' of DataFrame 'corpus_df'
 
     this function is designed to work with 2 classes
-    of target variable found in column 'label_col' of 'df',
+    of target variable found in column 'label_col' of 'corpus_df',
     values of classes (e.g., -1, 1)
     need to be supplied as a list in parameter 'label_vals'
 
@@ -795,13 +795,13 @@ def tfm_2class(df, label_col, label_vals, text_col,
     can be specified via parameters
     'class1_name' and 'class2_name'
 
-    'text_col' is the name of column in 'df'
+    'text_col' is the name of column in 'corpus_df'
     containing documents to be summarized
 
-    param: df -- pd.DataFrame  -- DataFrame that contains
+    param: corpus_df -- pd.DataFrame  -- DataFrame that contains
                                 the corpus to be summarized
            label_col -- string -- name of the column
-                                in 'df' containing label
+                                in 'corpus_df' containing label
                                 (target) information
            label_vals -- list  -- list of values that
                                  'label_col' can take
@@ -817,19 +817,19 @@ def tfm_2class(df, label_col, label_vals, text_col,
                                  max_df=max_df,
                                  min_df=min_df)
 
-    # fit vectorizer to corpus in 'text_col' of 'df'
-    vectors_f = vectorizer.fit(df[text_col])
+    # fit vectorizer to corpus in 'text_col' of 'corpus_df'
+    vectors_f = vectorizer.fit(corpus_df[text_col])
 
-    # create a subset of 'df' with all records of class 1
-    class1_subset = df \
-        .loc[df[label_col] == label_vals[0], text_col]
+    # create a subset of 'corpus_df' with all records of class 1
+    class1_subset = corpus_df \
+        .loc[corpus_df[label_col] == label_vals[0], text_col]
     # vectorize subset into a sparse matrix
     class1_doc_matrix = vectors_f \
         .transform(class1_subset)
 
-    # create a subset of 'df' with all records of class 2
-    class2_subset = df \
-        .loc[df[label_col] == label_vals[1], text_col]
+    # create a subset of 'corpus_df' with all records of class 2
+    class2_subset = corpus_df \
+        .loc[corpus_df[label_col] == label_vals[1], text_col]
     # vectorize subset into a sparse matrix
     class2_doc_matrix = vectors_f \
         .transform(class2_subset)
