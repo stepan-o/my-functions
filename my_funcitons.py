@@ -1,5 +1,25 @@
+import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+
+
+def unique_values(df_column: pd.Series, value_counts=True):
+    """
+    function to check unique values in a data frame column
+    :param df_column: pd.Series -- column (pandas Series) to be checked for unique values
+    :param value_counts: boolean -- (optional) show value counts, (default=True)
+    :return: None
+    """
+    column_total_values: int = len(df_column)
+    column_unique_values: int = len(df_column.value_counts())
+    print("Out of the total {0:,} records in column '{1}', {2:,}({3:.2f}%) have unique values."
+          .format(column_total_values,
+                  df_column.name,
+                  column_unique_values,
+                  column_unique_values / column_total_values * 100))
+    if value_counts:
+        print("\nValue counts for column '{0}':".format(df_column.name))
+        print(df_column.value_counts())
 
 
 def plot_time_series(series_to_plot, summary_stats=False,
