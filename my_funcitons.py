@@ -229,9 +229,11 @@ def plot_set_mean_median(set_to_plot, title,
     return
 
 
-def plot_bars_with_minmax(series_to_plot, title,
-                          with_minmax=True,
-                          min_border=0.95, max_border=0.99, minmax_width=0.5):
+def plot_bars_with_minmax(series_to_plot, title, horizontal=False, color='gray',
+                          xlabel="", ylabel="", tick_label_size=16,
+                          with_minmax=True, with_mean=True,
+                          min_border=0.95, max_border=0.99, minmax_width=0.5,
+                          sup_line=None):
     """
     function to plot a gray bar chart from a pandas Series,
     plots mean
@@ -251,41 +253,78 @@ def plot_bars_with_minmax(series_to_plot, title,
 
     Output:          None, plots and shows bar chart with mean and extremes (optional) highlighted
     """
+    font = dict(family='serif', color='darkred', weight='normal', size=16)
 
     # create figure and axis
-    f, ax = plt.subplots(1)
+    fig, ax = plt.subplots(1, figsize=(8, 5))
 
-    # plot a gray bar chart from input Series
-    plt.bar(x=series_to_plot.index,
-            height=series_to_plot,
-            color='gray')
+    if horizontal:
+        # plot a horizontal bar chart from input Series
+        plt.barh(y=series_to_plot.index,
+                 width=series_to_plot,
+                 color=color)
+        if with_mean:
+            # plot mean of the series
+            ax.axvline(series_to_plot.mean(), color='black', linestyle='--', linewidth=1)
+            ax.text(series_to_plot.mean() * 1.05,
+                    0,
+                    "Mean: {0:.2f}".format(series_to_plot.mean()),
+                    fontsize=16)
+        if sup_line:
+            ax.axhline(sup_line, color='black', linestyle='--', linewidth=1)
+        # optional: highlight the bars with minimum values (if input parameter 'with_min' is True)
+        if with_minmax:
+            min_se = series_to_plot[series_to_plot == series_to_plot.min()]
+            plt.barh(min_se.index,
+                     min_se * min_border,
+                     minmax_width,
+                     color='black')
 
-    # plot mean of the series
-    ax.axhline(series_to_plot.mean(), color='black', linestyle='--', linewidth=1)
-    ax.text(0,
-            series_to_plot.mean() * 1.01,
-            "Mean of counts: {0:.2f}".format(series_to_plot.mean()))
+            max_se = series_to_plot[series_to_plot == series_to_plot.max()]
+            plt.barh(max_se.index,
+                     max_se * max_border,
+                     minmax_width,
+                     color='lightgray')
+        # set axis parameters
+        ax.set_xlabel(xlabel, fontdict=font)
+        ax.set_ylabel(ylabel, fontdict=font)
+        ax.tick_params('both', labelrotation=1, labelsize=tick_label_size)
 
-    # optional: highlight the bars with minimum values (if input parameter 'with_min' is True)
-    if with_minmax:
-        min_se = series_to_plot[series_to_plot == series_to_plot.min()]
-        plt.bar(x=min_se.index,
-                height=min_se * min_border,
-                color='black',
-                width=minmax_width)
+    else:
+        # plot a bar chart from input Series
+        plt.bar(x=series_to_plot.index,
+                height=series_to_plot,
+                color=color)
 
-        max_se = series_to_plot[series_to_plot == series_to_plot.max()]
-        plt.bar(x=max_se.index,
-                height=max_se * max_border,
-                color='lightgray',
-                width=minmax_width)
+        if with_mean:
+            # plot mean of the series
+            ax.axhline(series_to_plot.mean(), color='black', linestyle='--', linewidth=1)
+            ax.text(0,
+                    series_to_plot.mean() * 1.01,
+                    "Mean: {0:.2f}".format(series_to_plot.mean()))
 
-    # set axis parameters
-    ax.set_title(title)
-    ax.set_xlabel("Number")
-    ax.set_xticks(series_to_plot.index)
-    ax.set_ylabel("Frequency of occurrences")
-    ax.tick_params('x', labelrotation=1, labelsize=20)
+        # optional: highlight the bars with minimum values (if input parameter 'with_min' is True)
+        if with_minmax:
+            min_se = series_to_plot[series_to_plot == series_to_plot.min()]
+            plt.bar(x=min_se.index,
+                    height=min_se * min_border,
+                    color='black',
+                    width=minmax_width)
+            max_se = series_to_plot[series_to_plot == series_to_plot.max()]
+            plt.bar(x=max_se.index,
+                    height=max_se * max_border,
+                    color='lightgray',
+                    width=minmax_width)
+        if sup_line:
+            ax.axvline(sup_line, color='black', linestyle='--', linewidth=1)
+        # set axis parameters
+        ax.set_xlabel(xlabel, fontdict=font)
+        ax.set_xticks(series_to_plot.index)
+        ax.set_ylabel(ylabel, fontdict=font)
+        ax.tick_params('both', labelrotation=1, labelsize=tick_label_size)
+
+    # set general axis parameters
+    ax.set_title(title, fontdict=font)
     ax.grid(False)
 
     plt.show()
@@ -1202,6 +1241,40 @@ def plot_model_results(plot_df,
     ax.set_xlabel(xlabel, fontdict=font)
     ax.set_title(title)
     plt.show()
+
+
+# -------------------- Specific functions -------------------------------
+
+
+def plot_q_parts(question_list, response_df,
+                 question, parts,
+                 comment='', return_subset=False, tick_label_size=12):
+    """
+    a function to plot results of a question from Kaggle survey
+    that are stored in a range of columns
+    """
+    question_start_col = question + '_Part_1'
+    question_last_col = question + '_Part_' + str(parts)
+
+    question_subset = response_df.loc[:, question_start_col:question_last_col]
+    answer_categories = []
+    for column in question_subset.columns:
+        answer_categories.append(question_list.loc[column].split(' - ')[-1])
+
+    question_subset.columns = answer_categories
+
+    series_to_plot = question_subset.count().sort_values(ascending=False)
+
+    title = question + ': ' + question_list[question + '_Part_1'].split(' - ')[0] + '\n' + comment
+
+    plot_bars_with_minmax(series_to_plot, title, horizontal=True,
+                          with_mean=False,
+                          tick_label_size=tick_label_size)
+
+    if return_subset:
+        return series_to_plot
+    else:
+        return
 
 # UNFINISHED FUNCTIONS
 # #def plot_dist(ser=None, df=None,
