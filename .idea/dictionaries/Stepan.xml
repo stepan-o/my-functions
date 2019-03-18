@@ -2,7 +2,9 @@
   <dictionary name="Stepan">
     <words>
       <w>barh</w>
+      <w>bigram</w>
       <w>darkred</w>
+      <w>labelize</w>
       <w>linestyle</w>
       <w>linewidth</w>
       <w>minmax</w>

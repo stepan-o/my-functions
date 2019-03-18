@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from collections.abc import Iterable
+from gensim.models.doc2vec import LabeledSentence
 
 
 def unique_values(df_column: pd.Series, value_counts=True):
@@ -178,6 +179,23 @@ def tokenize_text(text):
     filtered_tokens = list(filter(lambda token: len(token) >= min_length, tokens))
 
     return filtered_tokens
+
+
+def labelize_tweets_bg(token_series, tweets, label):
+    """
+    a function to transform a corpus
+    using the bigram model that will
+    detect frequently used phrases of
+    two words, and stick them together
+    """
+    phrases = Phrases(token_series)
+    bigram = Phraser(phrases)
+    result = []
+    prefix = label
+    for i, t in zip(tweets.index, tweets):
+        result.append(LabeledSentence(bigram[t],
+                                      [prefix + '_%s' % i]))
+    return result
 
 
 def plot_time_series(series_to_plot, summary_stats=False,
