@@ -8,6 +8,8 @@ from gensim.models.phrases import Phrases
 from gensim.models.phrases import Phraser
 from wordcloud import WordCloud
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
@@ -485,6 +487,88 @@ than null accuracy".format((null_accuracy-accuracy)*100))
           .format(train_test_time))
     print("-"*80)
     return accuracy, train_test_time
+
+
+def limit_accuracy_checker(classifier, limits,
+                           x_train, x_validation,
+                           y_train, y_validation,
+                           vectorizer_type='freq',
+                           sw='english',
+                           ngram_range=(1, 1),
+                           label_values=(0, 1)):
+    result = []
+    print(classifier)
+    print("\n")
+
+    for limit in limits:
+
+        print("----- '{0}' vectorization"
+              .format(vectorizer_type.upper()))
+        print("term document frq filter: {1} min {2} max"
+              .format(vectorizer_type.upper(),
+                      limit[1],
+                      limit[0]))
+        print("stop words:", sw)
+
+        if vectorizer_type == 'freq':
+            # vectorize using frequency encoding
+            vectorizer = \
+                CountVectorizer(binary=False,
+                                strip_accents='unicode',
+                                stop_words=sw,
+                                max_df=limit[0],
+                                min_df=limit[1],
+                                ngram_range=ngram_range)
+
+        elif vectorizer_type == 'onehot':
+            # vectorize using one-hot encoding
+            vectorizer = \
+                CountVectorizer(binary=True,
+                                strip_accents='unicode',
+                                stop_words=sw,
+                                max_df=limit[0],
+                                min_df=limit[1],
+                                ngram_range=ngram_range)
+
+        elif vectorizer_type == 'tfidf_freq':
+            # vectorize using TF-IDF frequency encoding
+            vectorizer = \
+                TfidfVectorizer(binary=False,
+                                strip_accents='unicode',
+                                stop_words=sw,
+                                max_df=limit[0],
+                                min_df=limit[1],
+                                ngram_range=ngram_range)
+
+        elif vectorizer_type == 'tfidf_onehot':
+            # vectorize using TF-IDF one-hot vectors
+            vectorizer = \
+                TfidfVectorizer(binary=True,
+                                strip_accents='unicode',
+                                stop_words=sw,
+                                max_df=limit[0],
+                                min_df=limit[1],
+                                ngram_range=ngram_range)
+        else:
+            raise ValueError("'vectorizer_type' must be 'freq', 'onehot', 'tfidf-freq', or 'tfidf-onehot'")
+
+        checker_pipeline = Pipeline([
+            ('vectorizer', vectorizer),
+            ('classifier', classifier)
+        ])
+
+        # assess model performance
+        limit_accuracy, tt_time = \
+            accuracy_summary(checker_pipeline,
+                             x_train,
+                             y_train,
+                             x_validation,
+                             y_validation,
+                             label_values)
+
+        # add model performance to results
+        result.append((limit, limit_accuracy, tt_time))
+    return result
 
 
 def plot_time_series(series_to_plot, summary_stats=False,
