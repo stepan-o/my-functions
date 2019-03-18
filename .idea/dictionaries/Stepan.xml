@@ -4,6 +4,7 @@
       <w>barh</w>
       <w>bigram</w>
       <w>darkred</w>
+      <w>deeppink</w>
       <w>labelize</w>
       <w>linestyle</w>
       <w>linewidth</w>
@@ -12,6 +13,8 @@
       <w>stemmer</w>
       <w>tokenized</w>
       <w>tokenizes</w>
+      <w>viridis</w>
+      <w>wordcloud</w>
       <w>xlabel</w>
       <w>ylabel</w>
     </words>

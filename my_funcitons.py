@@ -5,6 +5,7 @@ from collections.abc import Iterable
 from gensim.models.doc2vec import LabeledSentence
 from gensim.models.phrases import Phrases
 from gensim.models.phrases import Phraser
+from wordcloud import WordCloud
 
 
 def unique_values(df_column: pd.Series, value_counts=True):
@@ -225,6 +226,21 @@ def string_concat(ser, string_name="", display_sym=500,
     print(con_string[:display_sym])
 
     return con_string
+
+
+def plot_wordcloud(string, colormap='viridis'):
+    """
+    a function to plot a Word Cloud from a string of tokens
+    """
+    wordcloud = WordCloud(width=1600,
+                          height=800,
+                          max_font_size=200,
+                          colormap=colormap).generate(string)
+
+    f, ax = plt.subplots(1, figsize=(12, 10))
+    ax.imshow(wordcloud, interpolation="bilinear")
+    plt.axis("off")
+    plt.show()
 
 
 def plot_time_series(series_to_plot, summary_stats=False,
