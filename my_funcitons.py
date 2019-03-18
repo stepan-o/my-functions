@@ -8,6 +8,9 @@ from gensim.models.phrases import Phrases
 from gensim.models.phrases import Phraser
 from wordcloud import WordCloud
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
 
 
 def unique_values(df_column: pd.Series, value_counts=True):
@@ -339,6 +342,34 @@ def tfm_2class(df, label_col, label_vals, text_col,
         print("'return_type' must be either 'tfm' " +
               "for Term Frequency Matrix")
         print("or 'dtr' for AbsDiff / Total ratio.")
+
+
+def model_performance_report(labels,
+                             predictions,
+                             label_values):
+    """
+    a function to assess model performance
+    in predicting labels and print a report
+    """
+    con_mat = np.array(confusion_matrix(labels,
+                                        predictions,
+                                        label_values))
+
+    confusion = pd.DataFrame(con_mat,
+                             index=['positive', 'negative'],
+                             columns=['predicted_positive',
+                                      'predicted_negative'])
+
+    print("")
+    print("Accuracy Score: {0:.2f}%"
+          .format(accuracy_score(labels, predictions)*100))
+    print("-"*80)
+    print("Confusion Matrix\n")
+    print(confusion)
+    print("-"*80)
+    print("Classification Report\n")
+    print(classification_report(labels, predictions))
+    return
 
 
 def plot_time_series(series_to_plot, summary_stats=False,
