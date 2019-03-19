@@ -337,12 +337,16 @@ def plot_hist(series_to_plot, bins=10, plot_title='Histogram',
               mean_lab_xpos=1.1, med_lab_xpos=0.7, mean_med_lab_ypos=30., max_lab_ypos=0.7,
               flip_mean_med_labels=False,
               fig_width=8, fig_height=5,
+              xlabel='x', ylabel='Count',
               drop_na=True):
     """
     a function to plot a histogram of the provided pandas Series
+
+    :param ylabel:                string -- label for x axis
+    :param xlabel:                string -- label for y axis
     :param flip_mean_med_labels: boolean -- option to switch positions of mean and median labels
-    :param max_lab_ypos:         float -- parameter to position max label
-    :param med_lab_xpos:         float -- parameter to position median label
+    :param max_lab_ypos:           float -- parameter to position max label
+    :param med_lab_xpos:           float -- parameter to position median label
     :param mean_lab_xpos:          float -- parameter to position mean label
     :param mean_med_lab_ypos:      float -- parameter to position mean and median labels
     :param with_max:             boolean -- option to plot max histogram bin count
@@ -396,8 +400,8 @@ def plot_hist(series_to_plot, bins=10, plot_title='Histogram',
     # set axis parameters
     ax.grid(False)
     ax.set_title(plot_title, fontdict=font)
-    ax.set_ylabel('# of respondents', fontdict=font)
-    ax.set_xlabel('% of work time', fontdict=font)
+    ax.set_ylabel(ylabel, fontdict=font)
+    ax.set_xlabel(xlabel, fontdict=font)
     ax.tick_params('both', labelsize=14)
 
     plt.show()
