@@ -30,8 +30,10 @@
       <w>wordcloud</w>
       <w>xlabel</w>
       <w>xlift</w>
+      <w>xpos</w>
       <w>ylabel</w>
       <w>ylift</w>
+      <w>ypos</w>
     </words>
   </dictionary>
 </component>

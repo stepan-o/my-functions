@@ -332,6 +332,77 @@ def plot_bars_with_minmax(series_to_plot, title, horizontal=False, color='gray',
     return
 
 
+def plot_hist(series_to_plot, bins=10, plot_title='Histogram',
+              with_mean=True, with_median=True, with_max=False,
+              mean_lab_xpos=1.1, med_lab_xpos=0.7, mean_med_lab_ypos=30., max_lab_ypos=0.7,
+              flip_mean_med_labels=False,
+              fig_width=8, fig_height=5,
+              drop_na=True):
+    """
+    a function to plot a histogram of the provided pandas Series
+    :param flip_mean_med_labels: boolean -- option to switch positions of mean and median labels
+    :param max_lab_ypos:         float -- parameter to position max label
+    :param med_lab_xpos:         float -- parameter to position median label
+    :param mean_lab_xpos:          float -- parameter to position mean label
+    :param mean_med_lab_ypos:      float -- parameter to position mean and median labels
+    :param with_max:             boolean -- option to plot max histogram bin count
+    :param drop_na:              boolean -- option to drop missing values from Series
+    :param plot_title:            string -- title of the plot
+    :param series_to_plot: pandas Series -- Series to plot a histogram of
+    :param bins:                     int -- number of bins to use for the histogram
+    :param with_mean:            boolean -- whether to plot the mean of the Series
+    :param with_median:          boolean -- whether to plot the median of the Series
+    :param fig_width:              float -- width of the plot
+    :param fig_height:             float -- height of the plot
+    :return: None
+    """
+    font = dict(family='serif', color='darkred', weight='normal', size=16)
+
+    if drop_na:
+        # drop missing values from the Series
+        series_to_plot = series_to_plot.dropna()
+
+    # create figure and axis
+    fig, ax = plt.subplots(1, figsize=(fig_width, fig_height))
+
+    # plot histogram of the column values
+    n, bins, patches = ax.hist(series_to_plot, bins=bins)
+
+    # max count from all bins
+    hist_max = n.max()
+
+    if flip_mean_med_labels:
+        # switch positions of mean and median labels on the plot
+        temp = mean_lab_xpos
+        mean_lab_xpos = med_lab_xpos
+        med_lab_xpos = temp
+    if with_mean:
+        # plot mean of the column values
+        col_mean = series_to_plot.mean()
+        ax.axvline(col_mean, linestyle='--', color='lightgray')
+        ax.text(col_mean * mean_lab_xpos, hist_max / mean_med_lab_ypos, 'Mean: {0:.2f}%'.format(col_mean),
+                rotation=90, fontsize=12, color='lightgray', va='bottom')
+    if with_median:
+        col_median = series_to_plot.median()
+        ax.axvline(col_median, linestyle='--', color='black')
+        ax.text(col_median * med_lab_xpos, hist_max / mean_med_lab_ypos,
+                'Median: {0:.2f}%'.format(col_median), rotation=90, fontsize=12, va='bottom')
+
+    if with_max:
+        # plot max of the histogram counts
+        ax.text(0, hist_max * max_lab_ypos, 'Max histogram bin count: {0:,.0f}'.format(hist_max),
+                fontsize=12, color='black')
+
+    # set axis parameters
+    ax.grid(False)
+    ax.set_title(plot_title, fontdict=font)
+    ax.set_ylabel('# of respondents', fontdict=font)
+    ax.set_xlabel('% of work time', fontdict=font)
+    ax.tick_params('both', labelsize=14)
+
+    plt.show()
+
+
 def plot_xy(x=None, y=None, line_color='blue',
             line_label="", line_label_size=16,
             line_label_xlift=1, line_label_ylift=1.05,
