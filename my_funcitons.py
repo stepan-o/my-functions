@@ -230,6 +230,7 @@ def plot_set_mean_median(set_to_plot, title,
 
 
 def plot_bars_with_minmax(series_to_plot, title, horizontal=False, color='gray',
+                          fig_height=5, fig_width=8,
                           xlabel="", ylabel="", tick_label_size=16,
                           with_minmax=True, with_mean=True,
                           min_border=0.95, max_border=0.99, minmax_width=0.5,
@@ -256,7 +257,7 @@ def plot_bars_with_minmax(series_to_plot, title, horizontal=False, color='gray',
     font = dict(family='serif', color='darkred', weight='normal', size=16)
 
     # create figure and axis
-    fig, ax = plt.subplots(1, figsize=(8, 5))
+    fig, ax = plt.subplots(1, figsize=(fig_width, fig_height))
 
     if horizontal:
         # plot a horizontal bar chart from input Series
@@ -572,7 +573,7 @@ def unique_values(df_column: pd.Series, value_counts=True):
         print(df_column.value_counts())
 
 
-def duplicate_check(df, subsets_to_check: dict = None, cols_to_drop=None):
+def duplicate_check(df_to_check, subsets_to_check: dict = None, cols_to_drop=None):
     """
      function to perform the duplicate check
 
@@ -586,7 +587,7 @@ def duplicate_check(df, subsets_to_check: dict = None, cols_to_drop=None):
      to perform duplicate checks without these columns
      if 'subset_to_drop' is empty, this step is skipped
 
-    :param df: pd.DataFrame -- DataFrame on which to perform the duplicate check
+    :param df_to_check: pd.DataFrame -- DataFrame on which to perform the duplicate check
 
     :param subsets_to_check: dict -- dict, where keys are column subset names and
                                      values are subsets of columns to use
@@ -608,12 +609,12 @@ def duplicate_check(df, subsets_to_check: dict = None, cols_to_drop=None):
         :return: None, updates nonlocal dict 'dup_results'
         """
         # variables from the outer scope
-        nonlocal df, dup_results
+        nonlocal df_to_check, dup_results
         # create a new entry in results dictionary 'dup_results'
         dup_results[result_key] = dict()
         # determine the number of duplicates
-        dup_results[result_key]['num_duplicates'] = df.duplicated(subset=col_subset).sum()
-        dup_results[result_key]['num_total'] = len(df)
+        dup_results[result_key]['num_duplicates'] = df_to_check.duplicated(subset=col_subset).sum()
+        dup_results[result_key]['num_total'] = len(df_to_check)
         dup_results[result_key]['percentage'] = dup_results[result_key]['num_duplicates'] \
                                                 / dup_results[result_key]['num_total'] * 100
         print("Subset '{0}': {1:,} ({2:.2f}% of total {3:,}) records are detected as duplicated."
@@ -627,14 +628,14 @@ def duplicate_check(df, subsets_to_check: dict = None, cols_to_drop=None):
 
     # duplicate check using all columns as criteria
     key = 'all_columns'
-    subset = df.columns
+    subset = df_to_check.columns
     perform_duplicate_check(key, subset)
 
     # duplicate check using 'cols_to_drop' -- each test takes all columns minus one
     if isinstance(cols_to_drop, Iterable):
         for col in cols_to_drop:
             key = col
-            subset = df.columns
+            subset = df_to_check.columns
             subset = subset.drop(col)
             perform_duplicate_check(col, subset)
 
@@ -1248,7 +1249,9 @@ def plot_model_results(model_results_df,
 
 def plot_q_parts(question_list, response_df,
                  question, parts,
-                 comment='', return_subset=False, tick_label_size=12):
+                 comment='', return_subset=False, tick_label_size=12,
+                 fig_height=5, fig_width=8,
+                 with_minmax=True):
     """
     a function to plot results of a question from Kaggle survey
     that are stored in a range of columns
@@ -1269,7 +1272,9 @@ def plot_q_parts(question_list, response_df,
 
     plot_bars_with_minmax(series_to_plot, title, horizontal=True,
                           with_mean=False,
-                          tick_label_size=tick_label_size)
+                          tick_label_size=tick_label_size,
+                          fig_height=fig_height, fig_width=fig_width,
+                          with_minmax=with_minmax)
 
     if return_subset:
         return series_to_plot
