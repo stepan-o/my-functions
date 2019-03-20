@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ad69182-5936-4002-ad11-0072bda0f7b8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_funcitons.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_funcitons.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -422,12 +420,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553012753628</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="added 'split_train_test_time_series' (UNFINISHED)">
+      <created>1553108904902</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1553108904902</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1482" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25316456" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -461,7 +465,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added 'unique_values'" />
     <MESSAGE value="added 'duplicate_check'" />
     <MESSAGE value="added 'tokenize_text'" />
     <MESSAGE value="added 'labelize_tweets_bg'" />
@@ -486,7 +489,8 @@
     <MESSAGE value="added option to switch off plotting minmax to 'plot_q_parts'" />
     <MESSAGE value="added 'plot_hist'" />
     <MESSAGE value="minor fixes to 'plot_hist'" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor fixes to 'plot_hist'" />
+    <MESSAGE value="added 'split_train_test_time_series' (UNFINISHED)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added 'split_train_test_time_series' (UNFINISHED)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/my_functions.py" />
