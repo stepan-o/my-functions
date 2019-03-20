@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ad69182-5936-4002-ad11-0072bda0f7b8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_funcitons.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_funcitons.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -17,8 +19,8 @@
         <entry file="file://$PROJECT_DIR$/my_funcitons.py">
           <provider selected="true" editor-type-id="live-pycharm">
             <state>
-              <first_editor relative-caret-position="291">
-                <caret line="232" column="52" lean-forward="true" selection-start-line="232" selection-start-column="52" selection-end-line="232" selection-end-column="52" />
+              <first_editor relative-caret-position="299">
+                <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
                 <folding>
                   <element signature="e#1263#7529#0" />
                   <element signature="e#1263#4833#1" />
@@ -112,6 +114,14 @@
                   <element signature="e#14953#15215#1" />
                   <element signature="e#16263#17681#0" />
                   <element signature="e#16263#16710#1" />
+                  <element signature="e#43316#45704#0" />
+                  <element signature="e#43578#45692#0" />
+                  <element signature="e#44329#44810#0" />
+                  <element signature="e#44329#44383#0" />
+                  <element signature="e#44644#44810#0" />
+                  <element signature="e#45099#45580#0" />
+                  <element signature="e#45099#45153#0" />
+                  <element signature="e#45414#45580#0" />
                   <element signature="e#12925#13704#0" />
                   <element signature="e#12925#13024#1" />
                   <element signature="e#13318#13400#0" />
@@ -143,7 +153,7 @@
                   <element signature="e#48442#48464#0" />
                 </folding>
               </first_editor>
-              <second_editor relative-caret-position="-161" />
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -405,7 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553009421998</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="minor fixes to 'plot_hist'">
+      <created>1553012753628</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1553012753628</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -444,7 +461,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added 'my_functions.py'" />
     <MESSAGE value="added 'unique_values'" />
     <MESSAGE value="added 'duplicate_check'" />
     <MESSAGE value="added 'tokenize_text'" />
@@ -469,15 +485,16 @@
     <MESSAGE value="minor fix" />
     <MESSAGE value="added option to switch off plotting minmax to 'plot_q_parts'" />
     <MESSAGE value="added 'plot_hist'" />
-    <option name="LAST_COMMIT_MESSAGE" value="added 'plot_hist'" />
+    <MESSAGE value="minor fixes to 'plot_hist'" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor fixes to 'plot_hist'" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/my_functions.py" />
     <entry file="file://$PROJECT_DIR$/my_funcitons.py">
       <provider selected="true" editor-type-id="live-pycharm">
         <state>
-          <first_editor relative-caret-position="291">
-            <caret line="232" column="52" lean-forward="true" selection-start-line="232" selection-start-column="52" selection-end-line="232" selection-end-column="52" />
+          <first_editor relative-caret-position="299">
+            <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
             <folding>
               <element signature="e#1263#7529#0" />
               <element signature="e#1263#4833#1" />
@@ -571,6 +588,14 @@
               <element signature="e#14953#15215#1" />
               <element signature="e#16263#17681#0" />
               <element signature="e#16263#16710#1" />
+              <element signature="e#43316#45704#0" />
+              <element signature="e#43578#45692#0" />
+              <element signature="e#44329#44810#0" />
+              <element signature="e#44329#44383#0" />
+              <element signature="e#44644#44810#0" />
+              <element signature="e#45099#45580#0" />
+              <element signature="e#45099#45153#0" />
+              <element signature="e#45414#45580#0" />
               <element signature="e#12925#13704#0" />
               <element signature="e#12925#13024#1" />
               <element signature="e#13318#13400#0" />
@@ -602,7 +627,7 @@
               <element signature="e#48442#48464#0" />
             </folding>
           </first_editor>
-          <second_editor relative-caret-position="-161" />
+          <second_editor />
         </state>
       </provider>
     </entry>

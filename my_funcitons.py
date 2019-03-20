@@ -15,6 +15,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
+from sklearn.model_selection import TimeSeriesSplit
 from time import time
 
 
@@ -1087,6 +1088,63 @@ def plot_split(train, test, plot_title="", ylabel="y",
 
 
 # ----------------- Model training and validation -----------------------
+
+
+def split_train_test_time_series(full_data, n_splits=3, window_length=20, ylabel="", print_data=False):
+
+    # initialize TimeSeriesSplit from Scikit-Learn
+    splits = TimeSeriesSplit(n_splits=n_splits)
+
+    i = 0
+
+    # loop over all splits -- data is split into training and testing by point in time
+    for train_index, test_index in splits.split(full_data):
+        # count iterations
+        i += 1
+
+        X_train = full_data[train_index]
+        X_test = full_data[test_index]
+
+        # plot current train / test split of all time series data
+        split_title = 'Split {0}\ntrain from {1} to {2}, test from {3} to {4}' \
+            .format(i, X_train.index[0], X_train.index[-1], X_test.index[0], X_test.index[-1])
+
+        plot_split(X_train, X_test,
+                   plot_title=split_title, ylabel=ylabel)
+
+        print('-'*80)
+        print("\n-------- Training the model using expanding window of starting length {0} --------"
+              .format(window_length))
+        print('-'*80)
+        # expanding window -- expands from window_length to full length of training subset
+        for window_end in range(window_length, len(X_train)):
+            # generate input x and target y using expanding window
+            # input x is data points within the window
+            X_input_window = X_train[0:window_end]
+            # target y is the next data point outside of the window
+            Y_target = X_train[window_end]
+            if print_data:
+                # print all input points and target point
+                print("\n(Training) Input data points:", X_input_window)
+                print("(Training) Target:", Y_target)
+
+        print('-'*80)
+        print("\n------------- Training the model using sliding window of length {0} -------------"
+              .format(window_length))
+        print('-'*80)
+        # expanding window -- expands from window_length to full length of training subset
+        for window_end in range(window_length, len(X_train)):
+            # generate input x and target y using expanding window
+            # input x is data points within the window
+            X_input_window = X_train[window_end - window_length:window_end]
+            # target y is the next data point outside of the window
+            Y_target = X_train[window_end]
+            if print_data:
+                # print all input points and target point
+                print("\n(Training) Input data points:", X_input_window)
+                print("(Training) Target:", Y_target)
+
+    return
 
 
 def model_performance_report(labels,
