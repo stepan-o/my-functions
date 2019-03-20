@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib
 import seaborn as sns
 import statistics as stats
 from collections.abc import Iterable
@@ -334,15 +335,20 @@ def plot_bars_with_minmax(series_to_plot, title, horizontal=False, color='gray',
 
 
 def plot_hist(series_to_plot, bins=10, plot_title='Histogram',
-              with_mean=True, with_median=True, with_max=False,
+              with_mean=True, with_median=True, with_max=False, units="",
+              mean_color='lightgray', median_color='black',
               mean_lab_xpos=1.1, med_lab_xpos=0.7, mean_med_lab_ypos=30., max_lab_ypos=0.7,
               flip_mean_med_labels=False,
               fig_width=8, fig_height=5,
-              xlabel='x', ylabel='Count',
-              drop_na=True):
+              xlabel='x', ylabel='Count', ticks_sep=True,
+              drop_na=True, font_color='darkblue'):
     """
     a function to plot a histogram of the provided pandas Series
 
+    :param font_color:            string -- color to use for title and axis labels
+    :param median_color:          string -- color to use for mean label
+    :param mean_color:            string -- color to use for median label
+    :param units:                 string -- units to be used for mean and median
     :param ylabel:                string -- label for x axis
     :param xlabel:                string -- label for y axis
     :param flip_mean_med_labels: boolean -- option to switch positions of mean and median labels
@@ -361,7 +367,7 @@ def plot_hist(series_to_plot, bins=10, plot_title='Histogram',
     :param fig_height:             float -- height of the plot
     :return: None
     """
-    font = dict(family='serif', color='darkred', weight='normal', size=16)
+    font = dict(family='serif', color=font_color, weight='normal', size=16)
 
     if drop_na:
         # drop missing values from the Series
@@ -384,14 +390,19 @@ def plot_hist(series_to_plot, bins=10, plot_title='Histogram',
     if with_mean:
         # plot mean of the column values
         col_mean = series_to_plot.mean()
-        ax.axvline(col_mean, linestyle='--', color='lightgray')
-        ax.text(col_mean * mean_lab_xpos, hist_max / mean_med_lab_ypos, 'Mean: {0:.2f}%'.format(col_mean),
-                rotation=90, fontsize=12, color='lightgray', va='bottom')
+        ax.axvline(col_mean, linestyle='--', color='darkgray')
+        ax.text(col_mean * mean_lab_xpos,
+                hist_max / mean_med_lab_ypos,
+                'Mean: {0:,.2f}'.format(col_mean) + units,
+                rotation=90, fontsize=12, color=mean_color, va='bottom')
     if with_median:
         col_median = series_to_plot.median()
         ax.axvline(col_median, linestyle='--', color='black')
-        ax.text(col_median * med_lab_xpos, hist_max / mean_med_lab_ypos,
-                'Median: {0:.2f}%'.format(col_median), rotation=90, fontsize=12, va='bottom')
+        ax.text(col_median * med_lab_xpos,
+                hist_max / mean_med_lab_ypos,
+                'Median: {0:,.2f}'.format(col_median) + units,
+                rotation=90, fontsize=12, va='bottom',
+                color=median_color)
 
     if with_max:
         # plot max of the histogram counts
@@ -404,6 +415,14 @@ def plot_hist(series_to_plot, bins=10, plot_title='Histogram',
     ax.set_ylabel(ylabel, fontdict=font)
     ax.set_xlabel(xlabel, fontdict=font)
     ax.tick_params('both', labelsize=14)
+
+    if ticks_sep:
+        # add thousands separator to x and y ticks
+        ax.get_yaxis().set_major_formatter(
+            matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
+        # add thousands separator to x and y ticks
+        ax.get_xaxis().set_major_formatter(
+            matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
 
     plt.show()
 
