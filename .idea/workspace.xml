@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ad69182-5936-4002-ad11-0072bda0f7b8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_funcitons.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_funcitons.py" afterDir="false" />
-    </list>
+    <list default="true" id="4ad69182-5936-4002-ad11-0072bda0f7b8" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +15,8 @@
         <entry file="file://$PROJECT_DIR$/my_funcitons.py">
           <provider selected="true" editor-type-id="live-pycharm">
             <state>
-              <first_editor relative-caret-position="138">
-                <caret line="232" lean-forward="true" selection-start-line="232" selection-end-line="232" />
+              <first_editor relative-caret-position="333">
+                <caret line="334" column="10" lean-forward="true" selection-start-line="334" selection-start-column="10" selection-end-line="334" selection-end-column="10" />
                 <folding>
                   <element signature="e#1343#7609#0" />
                   <element signature="e#1343#4913#1" />
@@ -170,6 +167,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>train_test_split</find>
+      <find>plot_q</find>
+      <find>plot_bar</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -438,7 +437,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553120258293</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="minor fixes">
+      <created>1553129765189</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1553129765189</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -477,7 +483,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added 'tokenize_text'" />
     <MESSAGE value="added 'labelize_tweets_bg'" />
     <MESSAGE value="added 'string_concat'" />
     <MESSAGE value="added 'plot_wordcloud'" />
@@ -502,15 +507,16 @@
     <MESSAGE value="minor fixes to 'plot_hist'" />
     <MESSAGE value="added 'split_train_test_time_series' (UNFINISHED)" />
     <MESSAGE value="tweaked 'plot_hist' -- now can change title and axis label font color with parameter 'font_color'" />
-    <option name="LAST_COMMIT_MESSAGE" value="tweaked 'plot_hist' -- now can change title and axis label font color with parameter 'font_color'" />
+    <MESSAGE value="minor fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor fixes" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/my_functions.py" />
     <entry file="file://$PROJECT_DIR$/my_funcitons.py">
       <provider selected="true" editor-type-id="live-pycharm">
         <state>
-          <first_editor relative-caret-position="138">
-            <caret line="232" lean-forward="true" selection-start-line="232" selection-end-line="232" />
+          <first_editor relative-caret-position="333">
+            <caret line="334" column="10" lean-forward="true" selection-start-line="334" selection-start-column="10" selection-end-line="334" selection-end-column="10" />
             <folding>
               <element signature="e#1343#7609#0" />
               <element signature="e#1343#4913#1" />
