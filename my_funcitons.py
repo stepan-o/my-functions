@@ -231,8 +231,9 @@ def plot_set_mean_median(set_to_plot, title,
     return
 
 
-def plot_bars_with_minmax(series_to_plot, title, horizontal=False, color='gray',
+def plot_bars_with_minmax(series_to_plot, plot_title, horizontal=False, color='gray',
                           fig_height=5, fig_width=8,
+                          font_color='darkblue',
                           xlabel="", ylabel="", tick_label_size=16,
                           with_minmax=True, with_mean=True,
                           min_border=0.95, max_border=0.99, minmax_width=0.5,
@@ -256,7 +257,7 @@ def plot_bars_with_minmax(series_to_plot, title, horizontal=False, color='gray',
 
     Output:          None, plots and shows bar chart with mean and extremes (optional) highlighted
     """
-    font = dict(family='serif', color='darkred', weight='normal', size=16)
+    font = dict(family='serif', color=font_color, weight='normal', size=16)
 
     # create figure and axis
     fig, ax = plt.subplots(1, figsize=(fig_width, fig_height))
@@ -327,7 +328,7 @@ def plot_bars_with_minmax(series_to_plot, title, horizontal=False, color='gray',
         ax.tick_params('both', labelrotation=1, labelsize=tick_label_size)
 
     # set general axis parameters
-    ax.set_title(title, fontdict=font)
+    ax.set_title(plot_title, fontdict=font)
     ax.grid(False)
 
     plt.show()

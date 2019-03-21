@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ad69182-5936-4002-ad11-0072bda0f7b8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-functions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/my-functions.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_funcitons.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_funcitons.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,8 +18,8 @@
         <entry file="file://$PROJECT_DIR$/my_funcitons.py">
           <provider selected="true" editor-type-id="live-pycharm">
             <state>
-              <first_editor relative-caret-position="188">
-                <caret line="336" selection-start-line="336" selection-end-line="426" selection-end-column="14" />
+              <first_editor relative-caret-position="138">
+                <caret line="232" lean-forward="true" selection-start-line="232" selection-end-line="232" />
                 <folding>
                   <element signature="e#1343#7609#0" />
                   <element signature="e#1343#4913#1" />
@@ -39,7 +36,7 @@
                   <element signature="e#7798#7928#1" />
                   <element signature="e#8601#10049#0" />
                   <element signature="e#8601#9159#1" />
-                  <element signature="e#10438#14588#0" />
+                  <element signature="e#10548#14717#0" />
                   <element signature="e#10438#11532#1" />
                   <element signature="e#11729#13078#0" />
                   <element signature="e#11921#12209#0" />
@@ -434,7 +431,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553108904902</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="tweaked 'plot_hist' -- now can change title and axis label font color with parameter 'font_color'">
+      <created>1553120258293</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1553120258293</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -461,7 +465,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32916668" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32820514" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -473,7 +477,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added 'duplicate_check'" />
     <MESSAGE value="added 'tokenize_text'" />
     <MESSAGE value="added 'labelize_tweets_bg'" />
     <MESSAGE value="added 'string_concat'" />
@@ -498,15 +501,16 @@
     <MESSAGE value="added 'plot_hist'" />
     <MESSAGE value="minor fixes to 'plot_hist'" />
     <MESSAGE value="added 'split_train_test_time_series' (UNFINISHED)" />
-    <option name="LAST_COMMIT_MESSAGE" value="added 'split_train_test_time_series' (UNFINISHED)" />
+    <MESSAGE value="tweaked 'plot_hist' -- now can change title and axis label font color with parameter 'font_color'" />
+    <option name="LAST_COMMIT_MESSAGE" value="tweaked 'plot_hist' -- now can change title and axis label font color with parameter 'font_color'" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/my_functions.py" />
     <entry file="file://$PROJECT_DIR$/my_funcitons.py">
       <provider selected="true" editor-type-id="live-pycharm">
         <state>
-          <first_editor relative-caret-position="188">
-            <caret line="336" selection-start-line="336" selection-end-line="426" selection-end-column="14" />
+          <first_editor relative-caret-position="138">
+            <caret line="232" lean-forward="true" selection-start-line="232" selection-end-line="232" />
             <folding>
               <element signature="e#1343#7609#0" />
               <element signature="e#1343#4913#1" />
@@ -523,7 +527,7 @@
               <element signature="e#7798#7928#1" />
               <element signature="e#8601#10049#0" />
               <element signature="e#8601#9159#1" />
-              <element signature="e#10438#14588#0" />
+              <element signature="e#10548#14717#0" />
               <element signature="e#10438#11532#1" />
               <element signature="e#11729#13078#0" />
               <element signature="e#11921#12209#0" />
