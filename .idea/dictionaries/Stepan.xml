@@ -7,6 +7,7 @@
       <w>darkgreen</w>
       <w>darkred</w>
       <w>deeppink</w>
+      <w>jobsearch</w>
       <w>kaggle</w>
       <w>labelize</w>
       <w>lightgray</w>
@@ -19,6 +20,8 @@
       <w>pred</w>
       <w>scikit</w>
       <w>seaborn</w>
+      <w>serp</w>
+      <w>sjlast</w>
       <w>stemmer</w>
       <w>tfidf</w>
       <w>tokenized</w>
