@@ -12,6 +12,7 @@
       <w>lightgray</w>
       <w>linestyle</w>
       <w>linewidth</w>
+      <w>lxml</w>
       <w>minmax</w>
       <w>nltk</w>
       <w>onehot</w>
@@ -31,6 +32,7 @@
       <w>xlabel</w>
       <w>xlift</w>
       <w>xpos</w>
+      <w>xticks</w>
       <w>ylabel</w>
       <w>ylift</w>
       <w>ypos</w>

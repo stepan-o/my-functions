@@ -17,6 +17,8 @@ from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import TimeSeriesSplit
 from time import time
+import requests
+from bs4 import BeautifulSoup
 
 
 # -------------------- General plotting ---------------------------------
@@ -162,7 +164,8 @@ def plot_time_series(series_to_plot, summary_stats=False,
 def plot_scatter(ser1=None, ser2=None,
                  ser1_name="x", ser2_name="y",
                  plot_title="", tick_label_size=14,
-                 fit_reg=False, alpha=0.5):
+                 fit_reg=False, alpha=0.5,
+                 xticks_pos=None, xticks_lab=None):
     """
     a function to plot a scatter plot of 2 variables
     found in 'col1' and 'col2' of the
@@ -172,18 +175,22 @@ def plot_scatter(ser1=None, ser2=None,
     font = dict(family='serif', color='darkred', weight='normal', size=16)
 
     # set figure size
-    plt.figure(figsize=(8, 8))
+    fig, ax = plt.subplots(1, figsize=(8, 8))
 
     # plot the scatter plot
     sns.regplot(x=ser1, y=ser2,
                 fit_reg=fit_reg,
-                scatter_kws={'alpha': alpha})
+                scatter_kws={'alpha': alpha},
+                ax=ax)
 
     # set axis parameters
-    plt.ylabel(ser2_name, fontdict=font)
-    plt.xlabel(ser1_name, fontdict=font)
-    plt.title(plot_title, fontdict=font)
+    ax.set_ylabel(ser2_name, fontdict=font)
+    ax.set_xlabel(ser1_name, fontdict=font)
+    ax.set_title(plot_title, fontdict=font)
     plt.tick_params(labelsize=tick_label_size)
+
+    if xticks_pos:
+        plt.xticks(xticks_pos, xticks_lab)
 
     plt.show()
     return
@@ -732,7 +739,7 @@ def duplicate_check(df_to_check, subsets_to_check: dict = None, cols_to_drop=Non
 
     # set axis parameters
     font = {'family': 'serif',
-            'color':  'darkred',
+            'color': 'darkred',
             'weight': 'normal',
             'size': 16}
 
@@ -1008,18 +1015,18 @@ def train_dev_test_split(x, y, label_values,
     print("with {0:.2f}% negative, {1:.2f}% positive.\n"
         .format(
         (len(x_validation[y_validation == label_values[0]])
-         / (len(x_validation)*1.))*100,
+         / (len(x_validation) * 1.)) * 100,
         (len(x_validation[y_validation == label_values[1]])
-         / (len(x_validation)*1.))*100))
+         / (len(x_validation) * 1.)) * 100))
 
     print("Test set has total {0} entries"
           .format(len(x_test)))
     print("with {0:.2f}% negative, {1:.2f}% positive."
         .format(
         (len(x_test[y_test == label_values[0]])
-         / (len(x_test)*1.))*100,
+         / (len(x_test) * 1.)) * 100,
         (len(x_test[y_test == label_values[1]])
-         / (len(x_test)*1.))*100))
+         / (len(x_test) * 1.)) * 100))
 
     # return 6 subsets -- train, dev, and test x and y
     return x_train, x_validation, x_test, \
@@ -1091,7 +1098,6 @@ def plot_split(train, test, plot_title="", ylabel="y",
 
 
 def split_train_test_time_series(full_data, n_splits=3, window_length=20, ylabel="", print_data=False):
-
     # initialize TimeSeriesSplit from Scikit-Learn
     splits = TimeSeriesSplit(n_splits=n_splits)
 
@@ -1112,10 +1118,10 @@ def split_train_test_time_series(full_data, n_splits=3, window_length=20, ylabel
         plot_split(X_train, X_test,
                    plot_title=split_title, ylabel=ylabel)
 
-        print('-'*80)
+        print('-' * 80)
         print("\n-------- Training the model using expanding window of starting length {0} --------"
               .format(window_length))
-        print('-'*80)
+        print('-' * 80)
         # expanding window -- expands from window_length to full length of training subset
         for window_end in range(window_length, len(X_train)):
             # generate input x and target y using expanding window
@@ -1128,10 +1134,10 @@ def split_train_test_time_series(full_data, n_splits=3, window_length=20, ylabel
                 print("\n(Training) Input data points:", X_input_window)
                 print("(Training) Target:", Y_target)
 
-        print('-'*80)
+        print('-' * 80)
         print("\n------------- Training the model using sliding window of length {0} -------------"
               .format(window_length))
-        print('-'*80)
+        print('-' * 80)
         # expanding window -- expands from window_length to full length of training subset
         for window_end in range(window_length, len(X_train)):
             # generate input x and target y using expanding window
@@ -1165,11 +1171,11 @@ def model_performance_report(labels,
 
     print("")
     print("Accuracy Score: {0:.2f}%"
-          .format(accuracy_score(labels, predictions)*100))
-    print("-"*80)
+          .format(accuracy_score(labels, predictions) * 100))
+    print("-" * 80)
     print("Confusion Matrix\n")
     print(confusion)
-    print("-"*80)
+    print("-" * 80)
     print("Classification Report\n")
     print(classification_report(labels, predictions))
     return
@@ -1261,18 +1267,17 @@ def accuracy_summary(pipeline,
                      x_train, y_train,
                      x_test, y_test,
                      label_values=(0, 1)):
-
     # null accuracy using the Zero Rule
     if len(x_test[y_test == label_values[0]]) \
-            / (len(x_test)*1.) > 0.5:
+            / (len(x_test) * 1.) > 0.5:
         # predicting majority class
         null_accuracy = \
             len(x_test[y_test == label_values[0]]) \
-            / (len(x_test)*1.)
+            / (len(x_test) * 1.)
     else:
         null_accuracy = \
             1. - (len(x_test[y_test == label_values[0]])
-                  / (len(x_test)*1.))
+                  / (len(x_test) * 1.))
 
     # set starting time
     t0 = time()
@@ -1291,23 +1296,23 @@ def accuracy_summary(pipeline,
 
     # print model performance results
     print("null accuracy: {0:.2f}%"
-          .format(null_accuracy*100))
+          .format(null_accuracy * 100))
     print("accuracy score: {0:.2f}%"
-          .format(accuracy*100))
+          .format(accuracy * 100))
 
     # compare model performance to null accuracy
     if accuracy > null_accuracy:
         print("model is {0:.2f}% more accurate \
-than null accuracy".format((accuracy-null_accuracy)*100))
+than null accuracy".format((accuracy - null_accuracy) * 100))
     elif accuracy == null_accuracy:
         print("model has the same accuracy with \
 the null accuracy")
     else:
         print("model is {0:.2f}% less accurate \
-than null accuracy".format((null_accuracy-accuracy)*100))
+than null accuracy".format((null_accuracy - accuracy) * 100))
     print("train and test time: {0:.2f}s"
           .format(train_test_time))
-    print("-"*80)
+    print("-" * 80)
     return accuracy, train_test_time
 
 
@@ -1329,17 +1334,17 @@ def plot_model_results(model_results_df,
     """
     # font to be used in axes labels
     font = {'family': 'serif',
-            'color':  'darkred',
+            'color': 'darkred',
             'weight': 'normal',
             'size': 16}
     # font to be used for null accuracy
     font_null_acc = {'family': 'serif',
-                     'color':  'black',
+                     'color': 'black',
                      'weight': 'normal',
                      'size': 16}
     # font to be used for model accuracy
     font_acc = {'family': 'serif',
-                'color':  'darkgreen',
+                'color': 'darkgreen',
                 'weight': 'normal',
                 'size': 16}
 
@@ -1413,6 +1418,67 @@ def plot_q_parts(question_list, response_df,
         return series_to_plot
     else:
         return
+
+
+# -------------------------------------------------------------------------------------
+# --------------------------- Web scraping functions ----------------------------------
+# -------------------------------------------------------------------------------------
+
+def get_all_search_pages(url, max_postings=0):
+    """
+    a function to generate links to all subsequent search results pages
+
+    Input arguments: 'url'   -- str  -- starting page url, a page from search results
+          'max_postings'   -- int  -- option to limit number of results returned
+                                        (0 means no limit, return full results)
+
+    Returns: 'list_of_all_urls' -- list -- list of all subsequent URLs
+             'total_results'    -- int  -- total number of jobs postings found
+    """
+
+    # get the HTML of the first search results page
+    r = requests.get(url)
+    content = r.text
+
+    # make a soup out of the first page of search results
+    soup_1 = BeautifulSoup(content, 'lxml')
+
+    # extract the number of search results
+    num_results_str = soup_1.find('div', {'id': 'searchCount'}).text
+    # parse the string and extract the total number (4th element), replace comma with an empty space, convert to int
+    total_results = int(num_results_str.split()[3].replace(',', ''))
+
+    # add the common part between all search pages
+    next_pages_links = "https://www.indeed.ca" + \
+                       soup_1.find('div', {'class': 'pagination'}) \
+                       .find('a').get('href')[:-2]
+
+    print(next_pages_links)
+
+    # create empty list to store URLs of all search results pages
+    list_of_all_urls = list()
+
+    # add the first page to the 'list_of_all_urls'
+    list_of_all_urls.append(next_pages_links)
+
+    if max_postings:
+        # generate subsequent search results links (max postings -- parameter 'max_postings')
+        for start_position in range(20, max_postings, 20):
+            list_of_all_urls.append(next_pages_links + str(start_position))
+    else:
+        # generate subsequent search results links (max postings -- total search results)
+        for start_position in range(20, total_results, 20):
+            list_of_all_urls.append(next_pages_links + str(start_position))
+
+    print("Search returned a total of {0} results.".format(total_results))
+    print("A list with {0} links to subsequent search results pages was returned."
+          .format(len(list_of_all_urls)))
+    if max_postings:
+        print("Returned list contains links to the first {0} job postings, as per the provided 'max_postings."
+              .format(max_postings))
+
+    return list_of_all_urls, total_results
+
 
 # UNFINISHED FUNCTIONS
 # #def plot_dist(ser=None, df=None,
