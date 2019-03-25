@@ -11,6 +11,7 @@ from gensim.models.phrases import Phraser
 from wordcloud import WordCloud
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import cross_val_score
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
@@ -548,6 +549,30 @@ def plot_df(df_to_plot, x_key, title, x_lim=None, y_lim=None):
 
     if y_lim is not None:
         ax.set_ylim(y_lim)
+
+    plt.show()
+
+
+def plot_heatmap(df_to_plot):
+    """
+    a function to plot a heat map from a pandas DataFrame
+    """
+    # create figure and axis
+    fig, ax = plt.subplots(figsize=(20, 20))
+
+    # Generate a custom diverging colormap
+    cmap = sns.diverging_palette(50, 10, as_cmap=True)
+
+    # Draw the heat map with the mask and correct aspect ratio
+    sns.heatmap(df_to_plot,
+                cmap=cmap,
+                vmax=1,
+                center=0,
+                square=True,
+                linewidths=.5,
+                cbar_kws={"shrink": .5},
+                annot=True,
+                ax=ax)
 
     plt.show()
 
@@ -1112,6 +1137,37 @@ def plot_split(train, test, plot_title="", ylabel="y",
 
     plt.show()
     return
+
+
+def split_train_test(model, input_sets, Y, test_size,
+                     random_seed=25, num_folds=10):
+    """
+    a function to split data into training and testing,
+    fit provided model, and assess its performance
+    """
+    y_train, y_test = train_test_split(Y, test_size=test_size, random_state=random_seed)
+
+    for set_name, input_set in input_sets.items():
+
+        print("------------------------------------------------------------------------")
+        print("\n--- Fitting Gradient Boosting Regressor model on input set {0}".
+              format(set_name))
+
+        # split data into train and test
+        X_train, X_test,  = train_test_split(input_set,
+                                             test_size=test_size,
+                                             random_state=random_seed)
+        model.fit(X_train, y_train)
+        training_scores = cross_val_score(model, X_train, y_train, cv=num_folds)
+
+        print("--- Training score for input set X", set_name)
+        print("Cross-validation accuracy scores:\n", training_scores)
+
+        scores_mean = training_scores.mean()
+        var = ((training_scores - scores_mean) ** 2)
+        print("Model variance:", var)
+        print("\n--------- Test score for input set X:", model.score(X_test, y_test))
+        print("------------------------------------------------------------------------")
 
 
 # ----------------- Model training and validation -----------------------
