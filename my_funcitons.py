@@ -244,9 +244,9 @@ def plot_bars_with_minmax(series_to_plot, title, horizontal=False, color='gray',
                           min_border=0.95, max_border=0.99, minmax_width=0.5,
                           sup_line=None):
     """
-    function to plot a gray bar chart from a pandas Series,
+    a function to plot a gray bar chart from a pandas Series,
     plots mean
-    highlights bars with minimum values
+    highlights bars with min and max values
 
     Input arguments: series_to_plot -- pandas Series -- Series to plot as a bar chart
                      title          -- string        -- string containing title of the chart
@@ -1529,6 +1529,80 @@ def scrape_job_posts(list_of_all_urls, time_delay=0.5):
     print("--- {0} job postings have been scraped and saved to 'scraping_results_dict'."
           .format(len(scraping_results_dict)))
     return scraping_results_dict
+
+
+def parse_skills(scraping_results_dict, skills_keywords_dict):
+    """
+    function to parse job info from previously scraped job pages
+    extracts info from HTML of each job page, saves it to the dictionary 'results_dict'
+
+    Input arguments: scraping_results_dict -- dictionary -- contains 'link'--'HTML code'
+                                                            pairs of job postings
+                     skills_keywords_dict  -- dictionary -- contains skill categories and
+                                                            corresponding lists of keywords
+    """
+    # dictionary that is used to store scraping results
+    # keys will be job links and values will become job posting features
+    results_dict = dict()
+    for link, job_html_text in scraping_results_dict.items():
+
+        # make a soup out of a job posting HTML code
+        soup_job = BeautifulSoup(job_html_text, 'lxml')
+
+        # create a new sub-dictionary in the 'results_dict' with the job link as key
+        results_dict[link] = {}
+
+        # extract job title from the job page
+        try:
+            results_dict[link]['job_title'] = soup_job.find_all('h3',
+                                                                {'class':
+                                            'icl-u-xs-mb--xs icl-u-xs-mt--none jobsearch-JobInfoHeader-title'})[0].text
+        except IndexError:
+            results_dict[link]['job_title'] = 'Not found'
+        # extract company name
+        try:
+            results_dict[link]['company_name'] = soup_job.find_all('div',
+                                                                   {'class': 'icl-u-lg-mr--sm icl-u-xs-mr--xs'})[0].text
+        except IndexError:
+            results_dict[link]['company_name'] = 'Not found'
+        # extract job location
+        try:
+            # get the part of the <div> tag containing location
+            # ("MindGeek 47 reviews-Montréal, QC" on top of a job posting page)
+            location_line = soup_job.find_all('div',
+                                              {'class':
+                     "jobsearch-InlineCompanyRating icl-u-xs-mt--xs jobsearch-DesktopStickyContainer-companyrating"})[0]
+            # convert the tag to string, split by '-', select the second element (contains job location)
+            results_dict[link]['job_location'] = location_line.text.split('-')[1]
+        except IndexError:
+            results_dict[link]['job_location'] = 'Not found'
+        # extract job description section
+        try:
+            results_dict[link]['job_description'] = soup_job.find_all('div',
+                                                                      {'class':
+                                                        'jobsearch-JobComponent-description icl-u-xs-mt--md'})[0].text
+        except IndexError:
+            results_dict[link]['job_description'] = 'Not found'
+        # extract date posted
+        try:
+            results_dict[link]['date'] = soup_job.find_all('div',
+                                                           {'class':
+                                                            'jobsearch-JobMetadataFooter'})[0].text.split(' - ')[1]
+        except IndexError:
+            results_dict[link]['date'] = 'Not found'
+
+        # search for the skills
+        soup_job_text = soup_job.text
+        for skill_category, skills in skills_keywords_dict.items():
+            category_found = 0   # variable used to store results of the intermediate check (loop below)
+
+            for skill in skills:        # loop over all skills in the sublist of 'skills_keywords_dict'
+                if soup_job_text.find(skill) != -1:     # if skill from the sublist is found, set 'category_found' to 1
+                    category_found = 1
+
+            results_dict[link][skill_category] = category_found   # skill set to 1 if found, 0 if not, in 'results_dict'
+    results_df = pd.DataFrame(results_dict).T.reset_index()
+    return results_df
 
 
 # UNFINISHED FUNCTIONS

@@ -4,9 +4,12 @@
       <w>barh</w>
       <w>bigram</w>
       <w>blueviolet</w>
+      <w>coudera</w>
       <w>darkgreen</w>
       <w>darkred</w>
       <w>deeppink</w>
+      <w>hbase</w>
+      <w>hortonworks</w>
       <w>jobsearch</w>
       <w>kaggle</w>
       <w>labelize</w>
@@ -15,10 +18,13 @@
       <w>linewidth</w>
       <w>lxml</w>
       <w>minmax</w>
+      <w>montréal</w>
       <w>nltk</w>
       <w>onehot</w>
       <w>pred</w>
+      <w>probablity</w>
       <w>scikit</w>
+      <w>sdlc</w>
       <w>seaborn</w>
       <w>serp</w>
       <w>sjlast</w>

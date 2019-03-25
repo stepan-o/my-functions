@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ad69182-5936-4002-ad11-0072bda0f7b8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/markdown-navigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Stepan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Stepan.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_funcitons.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_funcitons.py" afterDir="false" />
     </list>
@@ -21,8 +19,8 @@
         <entry file="file://$PROJECT_DIR$/my_funcitons.py">
           <provider selected="true" editor-type-id="live-pycharm">
             <state>
-              <first_editor relative-caret-position="544">
-                <caret line="1480" lean-forward="true" selection-start-line="1426" selection-end-line="1480" />
+              <first_editor relative-caret-position="261">
+                <caret line="244" column="41" selection-start-line="244" selection-start-column="41" selection-end-line="244" selection-end-column="41" />
                 <folding>
                   <element signature="e#1343#7609#0" />
                   <element signature="e#1343#4913#1" />
@@ -152,12 +150,32 @@
                   <element signature="e#53059#53381#0" />
                   <element signature="e#53841#54880#0" />
                   <element signature="e#53841#53958#1" />
-                  <element signature="e#55134#55221#0" />
                   <element signature="e#55125#56880#0" />
                   <element signature="e#56578#56982#1" />
                   <element signature="e#56449#56671#0" />
                   <element signature="e#56692#56916#0" />
                   <element signature="e#57607#57725#0" />
+                  <element signature="e#57669#59961#0" />
+                  <element signature="e#59154#59616#1" />
+                  <element signature="e#58343#59712#0" />
+                  <element signature="e#59161#59741#0" />
+                  <element signature="e#59532#59624#0" />
+                  <element signature="e#60033#63933#0" />
+                  <element signature="e#62108#62513#1" />
+                  <element signature="e#60558#60609#0" />
+                  <element signature="e#60778#63851#0" />
+                  <element signature="e#61069#61320#0" />
+                  <element signature="e#61202#61347#0" />
+                  <element signature="e#63365#63547#0" />
+                  <element signature="e#63692#64204#0" />
+                  <element signature="e#61773#61825#0" />
+                  <element signature="e#61971#62094#0" />
+                  <element signature="e#64360#64567#0" />
+                  <element signature="e#62614#62753#0" />
+                  <element signature="e#64714#64891#0" />
+                  <element signature="e#63003#63107#0" />
+                  <element signature="e#65184#65662#0" />
+                  <element signature="e#65398#65540#0" />
                   <element signature="e#56790#56812#0" />
                 </folding>
               </first_editor>
@@ -438,7 +456,21 @@
       <option name="project" value="LOCAL" />
       <updated>1553108904902</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="added 'get_all_search_pages'">
+      <created>1553445331135</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1553445331135</updated>
+    </task>
+    <task id="LOCAL-00029" summary="added 'scrape_job_posts'">
+      <created>1553456036191</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1553456036191</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -465,7 +497,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32916668" />
+      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.32916668" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -477,8 +509,6 @@
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added 'duplicate_check'" />
-    <MESSAGE value="added 'tokenize_text'" />
     <MESSAGE value="added 'labelize_tweets_bg'" />
     <MESSAGE value="added 'string_concat'" />
     <MESSAGE value="added 'plot_wordcloud'" />
@@ -502,15 +532,17 @@
     <MESSAGE value="added 'plot_hist'" />
     <MESSAGE value="minor fixes to 'plot_hist'" />
     <MESSAGE value="added 'split_train_test_time_series' (UNFINISHED)" />
-    <option name="LAST_COMMIT_MESSAGE" value="added 'split_train_test_time_series' (UNFINISHED)" />
+    <MESSAGE value="added 'get_all_search_pages'" />
+    <MESSAGE value="added 'scrape_job_posts'" />
+    <option name="LAST_COMMIT_MESSAGE" value="added 'scrape_job_posts'" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/my_functions.py" />
     <entry file="file://$PROJECT_DIR$/my_funcitons.py">
       <provider selected="true" editor-type-id="live-pycharm">
         <state>
-          <first_editor relative-caret-position="544">
-            <caret line="1480" lean-forward="true" selection-start-line="1426" selection-end-line="1480" />
+          <first_editor relative-caret-position="261">
+            <caret line="244" column="41" selection-start-line="244" selection-start-column="41" selection-end-line="244" selection-end-column="41" />
             <folding>
               <element signature="e#1343#7609#0" />
               <element signature="e#1343#4913#1" />
@@ -640,12 +672,32 @@
               <element signature="e#53059#53381#0" />
               <element signature="e#53841#54880#0" />
               <element signature="e#53841#53958#1" />
-              <element signature="e#55134#55221#0" />
               <element signature="e#55125#56880#0" />
               <element signature="e#56578#56982#1" />
               <element signature="e#56449#56671#0" />
               <element signature="e#56692#56916#0" />
               <element signature="e#57607#57725#0" />
+              <element signature="e#57669#59961#0" />
+              <element signature="e#59154#59616#1" />
+              <element signature="e#58343#59712#0" />
+              <element signature="e#59161#59741#0" />
+              <element signature="e#59532#59624#0" />
+              <element signature="e#60033#63933#0" />
+              <element signature="e#62108#62513#1" />
+              <element signature="e#60558#60609#0" />
+              <element signature="e#60778#63851#0" />
+              <element signature="e#61069#61320#0" />
+              <element signature="e#61202#61347#0" />
+              <element signature="e#63365#63547#0" />
+              <element signature="e#63692#64204#0" />
+              <element signature="e#61773#61825#0" />
+              <element signature="e#61971#62094#0" />
+              <element signature="e#64360#64567#0" />
+              <element signature="e#62614#62753#0" />
+              <element signature="e#64714#64891#0" />
+              <element signature="e#63003#63107#0" />
+              <element signature="e#65184#65662#0" />
+              <element signature="e#65398#65540#0" />
               <element signature="e#56790#56812#0" />
             </folding>
           </first_editor>
