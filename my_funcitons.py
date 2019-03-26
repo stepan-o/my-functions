@@ -272,9 +272,7 @@ def plot_bars_with_minmax(series_to_plot, plot_title, horizontal=False, color='g
 
     if horizontal:
         # plot a horizontal bar chart from input Series
-        plt.barh(y=series_to_plot.index,
-                 width=series_to_plot,
-                 color=color)
+        sns.barplot(x=series_to_plot, y=series_to_plot.index, color=color, ax=ax)
         if with_mean:
             # plot mean of the series
             ax.axvline(series_to_plot.mean(), color='black', linestyle='--', linewidth=1)
@@ -287,20 +285,23 @@ def plot_bars_with_minmax(series_to_plot, plot_title, horizontal=False, color='g
         # optional: highlight the bars with minimum values (if input parameter 'with_min' is True)
         if with_minmax:
             min_se = series_to_plot[series_to_plot == series_to_plot.min()]
-            plt.barh(min_se.index,
-                     min_se * min_border,
-                     minmax_width,
-                     color='black')
+            #plt.barh(min_se.index,
+            #         min_se * min_border,
+            #         minmax_width,
+            #         color='black')
+            sns.barplot(x=min_se * min_border, y=min_se.index, color='black', alpha=0.8, ax=ax)
 
             max_se = series_to_plot[series_to_plot == series_to_plot.max()]
-            plt.barh(max_se.index,
-                     max_se * max_border,
-                     minmax_width,
-                     color='lightgray')
+            sns.barplot(x=max_se * max_border, y=max_se.index, color='lightgray', ax=ax)
+
+            #plt.barh(max_se.index,
+            #         max_se * max_border,
+            #         minmax_width,
+            #         color='lightgray')
         # set axis parameters
         ax.set_xlabel(xlabel, fontdict=font)
         ax.set_ylabel(ylabel, fontdict=font)
-        ax.tick_params('both', labelrotation=1, labelsize=tick_label_size)
+        #ax.tick_params('both', labelrotation=1, labelsize=tick_label_size)
 
     else:
         # plot a bar chart from input Series
@@ -333,7 +334,7 @@ def plot_bars_with_minmax(series_to_plot, plot_title, horizontal=False, color='g
         ax.set_xlabel(xlabel, fontdict=font)
         ax.set_xticks(series_to_plot.index)
         ax.set_ylabel(ylabel, fontdict=font)
-        ax.tick_params('both', labelrotation=1, labelsize=tick_label_size)
+        #ax.tick_params('both', labelrotation=1, labelsize=tick_label_size)
 
     # set general axis parameters
     ax.set_title(plot_title, fontdict=font)
@@ -1137,37 +1138,6 @@ def plot_split(train, test, plot_title="", ylabel="y",
 
     plt.show()
     return
-
-
-def split_train_test(model, input_sets, Y, test_size,
-                     random_seed=25, num_folds=10):
-    """
-    a function to split data into training and testing,
-    fit provided model, and assess its performance
-    """
-    y_train, y_test = train_test_split(Y, test_size=test_size, random_state=random_seed)
-
-    for set_name, input_set in input_sets.items():
-
-        print("------------------------------------------------------------------------")
-        print("\n--- Fitting Gradient Boosting Regressor model on input set {0}".
-              format(set_name))
-
-        # split data into train and test
-        X_train, X_test,  = train_test_split(input_set,
-                                             test_size=test_size,
-                                             random_state=random_seed)
-        model.fit(X_train, y_train)
-        training_scores = cross_val_score(model, X_train, y_train, cv=num_folds)
-
-        print("--- Training score for input set X", set_name)
-        print("Cross-validation accuracy scores:\n", training_scores)
-
-        scores_mean = training_scores.mean()
-        var = ((training_scores - scores_mean) ** 2)
-        print("Model variance:", var)
-        print("\n--------- Test score for input set X:", model.score(X_test, y_test))
-        print("------------------------------------------------------------------------")
 
 
 # ----------------- Model training and validation -----------------------

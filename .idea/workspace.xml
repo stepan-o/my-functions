@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4ad69182-5936-4002-ad11-0072bda0f7b8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Stepan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Stepan.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_funcitons.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_funcitons.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/my_funcitons.py">
+          <provider selected="true" editor-type-id="live-pycharm">
+            <state>
+              <first_editor relative-caret-position="360">
+                <caret line="344" lean-forward="true" selection-start-line="241" selection-end-line="344" />
+                <folding>
+                  <element signature="e#1407#7673#0" />
+                  <element signature="e#1407#4977#1" />
+                  <element signature="e#5008#5084#0" />
+                  <element signature="e#5216#5288#0" />
+                  <element signature="e#5448#5505#0" />
+                  <element signature="e#5529#5586#0" />
+                  <element signature="e#5616#5721#0" />
+                  <element signature="e#5746#6292#0" />
+                  <element signature="e#6315#6599#0" />
+                  <element signature="e#6624#6923#0" />
+                  <element signature="e#6951#7425#0" />
+                  <element signature="e#7913#8672#0" />
+                  <element signature="e#7913#8043#1" />
+                  <element signature="e#8826#10274#0" />
+                  <element signature="e#8826#9384#1" />
+                  <element signature="e#10769#15121#0" />
+                  <element signature="e#10717#11817#1" />
+                  <element signature="e#12067#13606#0" />
+                  <element signature="e#12207#12495#0" />
+                  <element signature="e#12780#13411#0" />
+                  <element signature="e#12856#12879#0" />
+                  <element signature="e#13275#13298#0" />
+                  <element signature="e#13633#15003#0" />
+                  <element signature="e#13813#14068#0" />
+                  <element signature="e#14205#14666#0" />
+                  <element signature="e#15368#19172#0" />
+                  <element signature="e#15368#16995#1" />
+                  <element signature="e#17097#17183#0" />
+                  <element signature="e#17470#17620#0" />
+                  <element signature="e#17647#18003#0" />
+                  <element signature="e#18032#18373#0" />
+                  <element signature="e#18400#18576#0" />
+                  <element signature="e#18817#19156#0" />
+                  <element signature="e#18458#20867#0" />
+                  <element signature="e#18458#18484#1" />
+                  <element signature="e#18535#19123#0" />
+                  <element signature="e#18535#18608#1" />
+                  <element signature="e#18650#18810#0" />
+                  <element signature="e#18854#19014#0" />
+                  <element signature="e#19379#19688#0" />
+                  <element signature="e#19789#19996#0" />
+                  <element signature="e#20261#20314#0" />
+                  <element signature="e#20520#20573#0" />
+                  <element signature="e#20937#22112#0" />
+                  <element signature="e#20937#21546#1" />
+                  <element signature="e#23332#23877#0" />
+                  <element signature="e#23332#23400#1" />
+                  <element signature="e#22205#22257#0" />
+                  <element signature="e#22290#22363#0" />
+                  <element signature="e#22397#22479#0" />
+                  <element signature="e#22609#23298#0" />
+                  <element signature="e#22609#22816#1" />
+                  <element signature="e#22860#23114#0" />
+                  <element signature="e#22925#22991#0" />
+                  <element signature="e#23340#24306#0" />
+                  <element signature="e#23340#23845#1" />
+                  <element signature="e#23928#24001#0" />
+                  <element signature="e#24099#24234#0" />
+                  <element signature="e#24372#25950#0" />
+                  <element signature="e#24372#25324#1" />
+                  <element signature="e#25688#25869#0" />
+                  <element signature="e#26093#26872#0" />
+                  <element signature="e#26093#26352#1" />
+                  <element signature="e#26768#26872#0" />
+                  <element signature="e#26963#30688#0" />
+                  <element signature="e#26963#28010#1" />
+                  <element signature="e#28077#29305#0" />
+                  <element signature="e#28077#28403#1" />
+                  <element signature="e#29679#29853#0" />
+                  <element signature="e#29716#29853#0" />
+                  <element signature="e#29906#29985#0" />
+                  <element signature="e#30039#30066#0" />
+                  <element signature="e#30305#30413#0" />
+                  <element signature="e#30798#33317#0" />
+                  <element signature="e#30798#32620#1" />
+                  <element signature="e#33377#33811#0" />
+                  <element signature="e#33377#33539#1" />
+                  <element signature="e#33692#33793#0" />
+                  <element signature="e#33915#34519#0" />
+                  <element signature="e#33915#34010#1" />
+                  <element signature="e#34072#34124#0" />
+                  <element signature="e#34166#34236#0" />
+                  <element signature="e#34738#38124#0" />
+                  <element signature="e#34738#35938#1" />
+                  <element signature="e#37748#37815#0" />
+                  <element signature="e#37856#37964#0" />
+                  <element signature="e#37983#38124#0" />
+                  <element signature="e#38179#38566#0" />
+                  <element signature="e#38179#38250#1" />
+                  <element signature="e#38780#40777#0" />
+                  <element signature="e#38780#39058#1" />
+                  <element signature="e#39112#39180#0" />
+                  <element signature="e#40704#40777#0" />
+                  <element signature="e#40843#41585#0" />
+                  <element signature="e#40843#41105#1" />
+                  <element signature="e#41710#43128#0" />
+                  <element signature="e#41710#42157#1" />
+                  <element signature="e#43316#45732#0" />
+                  <element signature="e#43578#45720#0" />
+                  <element signature="e#44380#44863#0" />
+                  <element signature="e#44380#44434#0" />
+                  <element signature="e#44695#44863#0" />
+                  <element signature="e#45212#45720#0" />
+                  <element signature="e#45212#45266#0" />
+                  <element signature="e#45552#45720#0" />
+                  <element signature="e#45862#46640#0" />
+                  <element signature="e#45862#45960#1" />
+                  <element signature="e#46254#46336#0" />
+                  <element signature="e#46982#49753#0" />
+                  <element signature="e#47067#49735#0" />
+                  <element signature="e#47403#47771#0" />
+                  <element signature="e#47827#48192#0" />
+                  <element signature="e#48252#48627#0" />
+                  <element signature="e#48689#49060#0" />
+                  <element signature="e#49220#49310#0" />
+                  <element signature="e#49911#51356#0" />
+                  <element signature="e#50041#50178#0" />
+                  <element signature="e#50197#50309#0" />
+                  <element signature="e#50902#51000#0" />
+                  <element signature="e#50908#50962#0" />
+                  <element signature="e#51045#51106#0" />
+                  <element signature="e#51051#51105#0" />
+                  <element signature="e#51125#51223#0" />
+                  <element signature="e#51131#51185#0" />
+                  <element signature="e#51642#53529#0" />
+                  <element signature="e#51642#51941#1" />
+                  <element signature="e#51990#52098#0" />
+                  <element signature="e#52159#52292#0" />
+                  <element signature="e#52349#52471#0" />
+                  <element signature="e#52651#53027#0" />
+                  <element signature="e#53059#53381#0" />
+                  <element signature="e#53841#54880#0" />
+                  <element signature="e#53841#53958#1" />
+                  <element signature="e#55125#56880#0" />
+                  <element signature="e#56578#56982#1" />
+                  <element signature="e#56449#56671#0" />
+                  <element signature="e#56692#56916#0" />
+                  <element signature="e#57607#57725#0" />
+                  <element signature="e#57669#59961#0" />
+                  <element signature="e#59154#59616#1" />
+                  <element signature="e#58343#59712#0" />
+                  <element signature="e#59161#59741#0" />
+                  <element signature="e#59532#59624#0" />
+                  <element signature="e#60033#63933#0" />
+                  <element signature="e#62108#62513#1" />
+                  <element signature="e#60558#60609#0" />
+                  <element signature="e#60778#63851#0" />
+                  <element signature="e#61069#61320#0" />
+                  <element signature="e#61202#61347#0" />
+                  <element signature="e#63365#63547#0" />
+                  <element signature="e#63692#64204#0" />
+                  <element signature="e#61773#61825#0" />
+                  <element signature="e#61971#62094#0" />
+                  <element signature="e#64360#64567#0" />
+                  <element signature="e#62614#62753#0" />
+                  <element signature="e#64714#64891#0" />
+                  <element signature="e#63003#63107#0" />
+                  <element signature="e#65184#65662#0" />
+                  <element signature="e#65398#65540#0" />
+                  <element signature="e#56790#56812#0" />
+                </folding>
+              </first_editor>
+              <second_editor relative-caret-position="-161" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/my_funcitons.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="110" />
+    <option name="y" value="90" />
+    <option name="width" value="1490" />
+    <option name="height" value="865" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="my-functions" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-functions" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Course" />
+    </panes>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4ad69182-5936-4002-ad11-0072bda0f7b8" name="Default Changelist" comment="" />
+      <created>1552882040148</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1552882040148</updated>
+    </task>
+    <task id="LOCAL-00001" summary="added 'split_train_test'">
+      <created>1553544141699</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1553544141699</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added 'my_functions.py'">
+      <created>1552882213602</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1552882213602</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added 'unique_values'">
+      <created>1552882486637</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1552882486637</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added 'duplicate_check'">
+      <created>1552882637808</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1552882637808</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added 'tokenize_text'">
+      <created>1552883758413</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1552883758413</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added 'labelize_tweets_bg'">
+      <created>1552884011780</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1552884011780</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added 'string_concat'">
+      <created>1552884315930</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1552884315930</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added 'plot_wordcloud'">
+      <created>1552885234996</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1552885234996</updated>
+    </task>
+    <task id="LOCAL-00009" summary="added 'tfm_2class'">
+      <created>1552885738370</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1552885738371</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added 'model_performance_report'">
+      <created>1552885976056</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1552885976056</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added 'train_dev_test_split'">
+      <created>1552886639898</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1552886639899</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added 'accuracy_summary'">
+      <created>1552886867908</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1552886867909</updated>
+    </task>
+    <task id="LOCAL-00013" summary="added 'limit_accuracy_checker'">
+      <created>1552887277766</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1552887277766</updated>
+    </task>
+    <task id="LOCAL-00014" summary="added 'plot_model_results'">
+      <created>1552887370144</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1552887370144</updated>
+    </task>
+    <task id="LOCAL-00015" summary="rearranged functions by purpose">
+      <created>1552887913262</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1552887913262</updated>
+    </task>
+    <task id="LOCAL-00016" summary="added 'plot_bars_with_minmax'">
+      <created>1552888078030</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1552888078030</updated>
+    </task>
+    <task id="LOCAL-00017" summary="added 'plot_set_mean_median'">
+      <created>1552888300018</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1552888300018</updated>
+    </task>
+    <task id="LOCAL-00018" summary="added 'plot_xy'">
+      <created>1552888990106</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1552888990106</updated>
+    </task>
+    <task id="LOCAL-00019" summary="added 'taylor_approx_sin_x' and 'taylor_sin_x_loop'">
+      <created>1552889352558</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1552889352558</updated>
+    </task>
+    <task id="LOCAL-00020" summary="added 'plot_df'">
+      <created>1552889541921</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1552889541921</updated>
+    </task>
+    <task id="LOCAL-00021" summary="added 'plot_q_parts'">
+      <created>1552941891901</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1552941891901</updated>
+    </task>
+    <task id="LOCAL-00022" summary="minor fix">
+      <created>1552941975285</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1552941975285</updated>
+    </task>
+    <task id="LOCAL-00023" summary="minor fix">
+      <created>1552942046888</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1552942046888</updated>
+    </task>
+    <task id="LOCAL-00024" summary="added option to switch off plotting minmax to 'plot_q_parts'">
+      <created>1552999878426</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1552999878426</updated>
+    </task>
+    <task id="LOCAL-00025" summary="added 'plot_hist'">
+      <created>1553009421998</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1553009421998</updated>
+    </task>
+    <task id="LOCAL-00026" summary="minor fixes to 'plot_hist'">
+      <created>1553012753628</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1553012753628</updated>
+    </task>
+    <task id="LOCAL-00027" summary="added 'split_train_test_time_series' (UNFINISHED)">
+      <created>1553108904902</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1553108904902</updated>
+    </task>
+    <task id="LOCAL-00028" summary="added 'get_all_search_pages'">
+      <created>1553445331135</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1553445331135</updated>
+    </task>
+    <task id="LOCAL-00029" summary="added 'scrape_job_posts'">
+      <created>1553456036191</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1553456036191</updated>
+    </task>
+    <task id="LOCAL-00030" summary="docstring fixes">
+      <created>1553524210135</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1553524210135</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1482" height="878" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2601969" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Learn" order="3" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="UI Designer" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32916668" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Educational.CheckDetails" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.44382024" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+    </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added 'split_train_test'" />
+    <option name="LAST_COMMIT_MESSAGE" value="added 'split_train_test'" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/my_functions.py" />
+    <entry file="file://$PROJECT_DIR$/my_funcitons.py">
+      <provider selected="true" editor-type-id="live-pycharm">
+        <state>
+          <first_editor relative-caret-position="360">
+            <caret line="344" lean-forward="true" selection-start-line="241" selection-end-line="344" />
+            <folding>
+              <element signature="e#1407#7673#0" />
+              <element signature="e#1407#4977#1" />
+              <element signature="e#5008#5084#0" />
+              <element signature="e#5216#5288#0" />
+              <element signature="e#5448#5505#0" />
+              <element signature="e#5529#5586#0" />
+              <element signature="e#5616#5721#0" />
+              <element signature="e#5746#6292#0" />
+              <element signature="e#6315#6599#0" />
+              <element signature="e#6624#6923#0" />
+              <element signature="e#6951#7425#0" />
+              <element signature="e#7913#8672#0" />
+              <element signature="e#7913#8043#1" />
+              <element signature="e#8826#10274#0" />
+              <element signature="e#8826#9384#1" />
+              <element signature="e#10769#15121#0" />
+              <element signature="e#10717#11817#1" />
+              <element signature="e#12067#13606#0" />
+              <element signature="e#12207#12495#0" />
+              <element signature="e#12780#13411#0" />
+              <element signature="e#12856#12879#0" />
+              <element signature="e#13275#13298#0" />
+              <element signature="e#13633#15003#0" />
+              <element signature="e#13813#14068#0" />
+              <element signature="e#14205#14666#0" />
+              <element signature="e#15368#19172#0" />
+              <element signature="e#15368#16995#1" />
+              <element signature="e#17097#17183#0" />
+              <element signature="e#17470#17620#0" />
+              <element signature="e#17647#18003#0" />
+              <element signature="e#18032#18373#0" />
+              <element signature="e#18400#18576#0" />
+              <element signature="e#18817#19156#0" />
+              <element signature="e#18458#20867#0" />
+              <element signature="e#18458#18484#1" />
+              <element signature="e#18535#19123#0" />
+              <element signature="e#18535#18608#1" />
+              <element signature="e#18650#18810#0" />
+              <element signature="e#18854#19014#0" />
+              <element signature="e#19379#19688#0" />
+              <element signature="e#19789#19996#0" />
+              <element signature="e#20261#20314#0" />
+              <element signature="e#20520#20573#0" />
+              <element signature="e#20937#22112#0" />
+              <element signature="e#20937#21546#1" />
+              <element signature="e#23332#23877#0" />
+              <element signature="e#23332#23400#1" />
+              <element signature="e#22205#22257#0" />
+              <element signature="e#22290#22363#0" />
+              <element signature="e#22397#22479#0" />
+              <element signature="e#22609#23298#0" />
+              <element signature="e#22609#22816#1" />
+              <element signature="e#22860#23114#0" />
+              <element signature="e#22925#22991#0" />
+              <element signature="e#23340#24306#0" />
+              <element signature="e#23340#23845#1" />
+              <element signature="e#23928#24001#0" />
+              <element signature="e#24099#24234#0" />
+              <element signature="e#24372#25950#0" />
+              <element signature="e#24372#25324#1" />
+              <element signature="e#25688#25869#0" />
+              <element signature="e#26093#26872#0" />
+              <element signature="e#26093#26352#1" />
+              <element signature="e#26768#26872#0" />
+              <element signature="e#26963#30688#0" />
+              <element signature="e#26963#28010#1" />
+              <element signature="e#28077#29305#0" />
+              <element signature="e#28077#28403#1" />
+              <element signature="e#29679#29853#0" />
+              <element signature="e#29716#29853#0" />
+              <element signature="e#29906#29985#0" />
+              <element signature="e#30039#30066#0" />
+              <element signature="e#30305#30413#0" />
+              <element signature="e#30798#33317#0" />
+              <element signature="e#30798#32620#1" />
+              <element signature="e#33377#33811#0" />
+              <element signature="e#33377#33539#1" />
+              <element signature="e#33692#33793#0" />
+              <element signature="e#33915#34519#0" />
+              <element signature="e#33915#34010#1" />
+              <element signature="e#34072#34124#0" />
+              <element signature="e#34166#34236#0" />
+              <element signature="e#34738#38124#0" />
+              <element signature="e#34738#35938#1" />
+              <element signature="e#37748#37815#0" />
+              <element signature="e#37856#37964#0" />
+              <element signature="e#37983#38124#0" />
+              <element signature="e#38179#38566#0" />
+              <element signature="e#38179#38250#1" />
+              <element signature="e#38780#40777#0" />
+              <element signature="e#38780#39058#1" />
+              <element signature="e#39112#39180#0" />
+              <element signature="e#40704#40777#0" />
+              <element signature="e#40843#41585#0" />
+              <element signature="e#40843#41105#1" />
+              <element signature="e#41710#43128#0" />
+              <element signature="e#41710#42157#1" />
+              <element signature="e#43316#45732#0" />
+              <element signature="e#43578#45720#0" />
+              <element signature="e#44380#44863#0" />
+              <element signature="e#44380#44434#0" />
+              <element signature="e#44695#44863#0" />
+              <element signature="e#45212#45720#0" />
+              <element signature="e#45212#45266#0" />
+              <element signature="e#45552#45720#0" />
+              <element signature="e#45862#46640#0" />
+              <element signature="e#45862#45960#1" />
+              <element signature="e#46254#46336#0" />
+              <element signature="e#46982#49753#0" />
+              <element signature="e#47067#49735#0" />
+              <element signature="e#47403#47771#0" />
+              <element signature="e#47827#48192#0" />
+              <element signature="e#48252#48627#0" />
+              <element signature="e#48689#49060#0" />
+              <element signature="e#49220#49310#0" />
+              <element signature="e#49911#51356#0" />
+              <element signature="e#50041#50178#0" />
+              <element signature="e#50197#50309#0" />
+              <element signature="e#50902#51000#0" />
+              <element signature="e#50908#50962#0" />
+              <element signature="e#51045#51106#0" />
+              <element signature="e#51051#51105#0" />
+              <element signature="e#51125#51223#0" />
+              <element signature="e#51131#51185#0" />
+              <element signature="e#51642#53529#0" />
+              <element signature="e#51642#51941#1" />
+              <element signature="e#51990#52098#0" />
+              <element signature="e#52159#52292#0" />
+              <element signature="e#52349#52471#0" />
+              <element signature="e#52651#53027#0" />
+              <element signature="e#53059#53381#0" />
+              <element signature="e#53841#54880#0" />
+              <element signature="e#53841#53958#1" />
+              <element signature="e#55125#56880#0" />
+              <element signature="e#56578#56982#1" />
+              <element signature="e#56449#56671#0" />
+              <element signature="e#56692#56916#0" />
+              <element signature="e#57607#57725#0" />
+              <element signature="e#57669#59961#0" />
+              <element signature="e#59154#59616#1" />
+              <element signature="e#58343#59712#0" />
+              <element signature="e#59161#59741#0" />
+              <element signature="e#59532#59624#0" />
+              <element signature="e#60033#63933#0" />
+              <element signature="e#62108#62513#1" />
+              <element signature="e#60558#60609#0" />
+              <element signature="e#60778#63851#0" />
+              <element signature="e#61069#61320#0" />
+              <element signature="e#61202#61347#0" />
+              <element signature="e#63365#63547#0" />
+              <element signature="e#63692#64204#0" />
+              <element signature="e#61773#61825#0" />
+              <element signature="e#61971#62094#0" />
+              <element signature="e#64360#64567#0" />
+              <element signature="e#62614#62753#0" />
+              <element signature="e#64714#64891#0" />
+              <element signature="e#63003#63107#0" />
+              <element signature="e#65184#65662#0" />
+              <element signature="e#65398#65540#0" />
+              <element signature="e#56790#56812#0" />
+            </folding>
+          </first_editor>
+          <second_editor relative-caret-position="-161" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
