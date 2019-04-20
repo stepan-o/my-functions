@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ad69182-5936-4002-ad11-0072bda0f7b8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Stepan.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Stepan.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_funcitons.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_funcitons.py" afterDir="false" />
-    </list>
+    <list default="true" id="4ad69182-5936-4002-ad11-0072bda0f7b8" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,8 +13,8 @@
         <entry file="file://$PROJECT_DIR$/my_funcitons.py">
           <provider selected="true" editor-type-id="live-pycharm">
             <state>
-              <first_editor relative-caret-position="360">
-                <caret line="344" lean-forward="true" selection-start-line="241" selection-end-line="344" />
+              <first_editor relative-caret-position="268">
+                <caret line="245" column="59" lean-forward="true" selection-start-line="245" selection-start-column="59" selection-end-line="245" selection-end-column="59" />
                 <folding>
                   <element signature="e#1407#7673#0" />
                   <element signature="e#1407#4977#1" />
@@ -505,8 +502,8 @@
     <entry file="file://$PROJECT_DIR$/my_funcitons.py">
       <provider selected="true" editor-type-id="live-pycharm">
         <state>
-          <first_editor relative-caret-position="360">
-            <caret line="344" lean-forward="true" selection-start-line="241" selection-end-line="344" />
+          <first_editor relative-caret-position="268">
+            <caret line="245" column="59" lean-forward="true" selection-start-line="245" selection-start-column="59" selection-end-line="245" selection-end-column="59" />
             <folding>
               <element signature="e#1407#7673#0" />
               <element signature="e#1407#4977#1" />
